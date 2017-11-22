@@ -1,0 +1,143 @@
+﻿.login, .regist{
+	margin-left:20px;
+}
+
+.title{
+	font-size:24px;
+	color:#323334;
+}
+
+/*头像*/
+.avatar-picture{
+	display:inline-block;
+	width:100px;
+	height:100px;
+}
+
+.padding-top-50{
+	padding-top:50px;
+}
+
+.margin-top-20{
+	margin-top:20px;
+}
+
+.publish-content{
+	resize:none;
+	outline:none;
+	text-indent: 2em;
+	font-size:12px;
+	line-height:24px;
+}
+
+.btn-publish, .btn-empty{
+	outline:none;
+	margin-top:10px;
+}
+.btn-publish{
+	margin-right:20px;
+}
+
+.introduce{
+	font-size:14px;
+	line-height:28px;
+	text-indent:2em;
+}
+.introduce a{
+	color:red;
+}
+
+.one-part{
+	border-radius:8px;
+	box-shadow:-2px 0 0 #777,0 2px 2px #777,2px 0 2px #777;
+	-moz-box-shadow:-2px 0 0 #777,0 2px 2px #777,2px 0 2px #777;
+	-webkit-box-shadow:-2px 0 0 #777,0 2px 2px #777,2px 0 2px #777;
+	width:31.3333%;
+	padding:5px 10px 15px;
+	margin: 10px 1%;
+}
+
+.one-part .person-title{
+	font-size:0;
+	padding-left:20px;
+}
+
+.person-title .person-avatar{
+	display:inline-block;
+	height:60px;
+	width:60px;
+	border:1px solid #a8c654;
+	border-radius:50%;
+	-moz-border-radius:50%;
+	-webkit-border-radius:50%;
+	vertical-align:middle;
+}
+.person-title span{
+	display:inline-block;
+	font-size:16px;
+	color:#9ba3ef;
+	vertical-align:middle;
+	padding-left:20px;
+}
+
+.one-part .content{
+	height:67px;
+	font-size:12px;
+	line-height:24px;
+	text-indent:2em;
+	display: -webkit-box;  /*必须结合的属性 ，将对象作为弹性伸缩盒子模型显示*/
+	-webkit-box-orient: vertical;  /*必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式*/
+	-webkit-line-clamp: 3;    /*用来限制在一个块元素显示的文本的行数*/
+	overflow: hidden;
+}
+/*
+可兼容大部分浏览器的多行显示省略号方法
+p{position: relative; line-height: 20px; max-height: 40px;overflow: hidden;}
+p::after{content: "..."; position: absolute; bottom: 0; right: 0; padding-left: 40px;
+background: -webkit-linear-gradient(left, transparent, #fff 55%);
+background: -o-linear-gradient(right, transparent, #fff 55%);
+background: -moz-linear-gradient(right, transparent, #fff 55%);
+background: linear-gradient(to right, transparent, #fff 55%);
+}
+适用范围：
+该方法适用范围广，但文字未超出行的情况下也会出现省略号,可结合js优化该方法。
+
+注：
+
+1、将height设置为line-height的整数倍，防止超出的文字露出。
+2、给p::after添加渐变背景可避免文字只显示一半。
+3、由于ie6-7不显示content内容，所以要添加标签兼容ie6-7（如：<span>…<span/>）；兼容ie8需要将::after替换成:after。
+
+*/
+.one-part .messge-detail{
+	float:right;
+	padding:5px;
+	color:#7871ab;
+	cursor:pointer;
+}
+.one-part .messge-detail:hover{
+	color:#0fce0a;
+}
+.page-btns{
+	text-align:left;
+	font-size:0;
+	margin-top:20px;
+}
+.page-btns .page-number{
+	display:inline-block;
+	width:30px;
+	height:30px;
+	text-align:center;
+	line-height:30px;
+	font-size:12px;
+	color:#00f;
+	border: 1px solid #999;
+	margin:0 5px;
+	cursor:pointer;
+}
+.page-btns .active{
+	background-color:#00f;
+	color:#fff;
+}
+
+

@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="/favicon.ico">
+
+		<title>简易微博</title>
+
+		<!-- Bootstrap core CSS -->
+		<link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="/css/index.css" />
+	</head>
+
+	<body>
+		<!--引入公共部分-->
+		<% include nav.ejs %>
+		<!-- Main jumbotron for a primary marketing message or call to action -->
+		<div class="jumbotron">
+			<% if(islogin){ %>
+				<!--登录状态-->
+				<div class="container padding-top-50">
+					<div class="row">
+						<div class="col-lg-1 col-lg-offset-1 margin-top-20">
+							<a href="/uploadimage" id="change-avatar"><img src="<%= avatar %>" alt="用户头像" title="点击更换头像" class="avatar-picture" /></a>
+						</div>
+						<div class="col-lg-6 col-lg-offset-1">
+							<p>当前用户：<%= username %></p>
+							<textarea class="publish-content" cols="80" rows="5" name="say" id="publish-content" placeholder="请在此输入您要发表的内容"></textarea>
+							<button id="publish" class="btn btn-success btn-publish">发表说说</button>
+							<button id="empty" class="btn btn-info btn-empty">清空内容</button>
+						</div>
+					</div>
+				</div>
+			<% }else{ %>
+				<!--非登录状态-->
+				<div class="container padding-top-50">
+					<div class="rows">
+						<div class="col-lg-2">
+							<a href="/"><img src="/images/logo.jpg" title="平台LOGO" alt="LOGO" /></a>
+						</div>
+						<div class="col-lg-8 col-lg-offset-1">
+							<p class="introduce">
+								您好！欢迎来到学习交流乐园，您可以在<a href="/user/login">登录</a>系统后，发表想跟大家交流的内容。同时，本平台的其他所有用户也可以对您的内容进行评论、点赞等等互动！
+							</p>	
+						</div>
+					</div>
+				</div>
+			<% } %>
+		</div>
+
+		<div class="container">
+			<!-- Example row of columns -->
+			<div class="row" id="all-content">
+				<!--<div class="col-md-4 one-part">
+					<div class="person-title">
+						<img src="moren.jpg" class="person-avatar" alt="" title="" />
+						<span>username 说:</span>
+					</div>
+					<p class="content">我是今天发表的第一条信息啊，这是一条测试内容显示多行时能不能显示省略号的。我是今天发表的第一条信息啊，这是一条测试内容显示多行时能不能显示省略号的。我是今天发表的第一条信息啊，这是一条测试内容显示多行时能不能显示省略号的。</p>
+					<span class="messge-detail">查看详情</span>
+				</div> -->
+			</div>
+			
+			<hr />
+
+			<footer>
+				<p>&copy; 2017 Company, Inc.</p>
+			</footer>
+		</div>
+		<!-- /container -->
+		<script src="/js/jquery-3.2.1.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/warnLayer.js"></script>
+		<script src="/js/index.js"></script>
+		<!--信息详细窗口-->
+		<% include messageDetail.ejs %>
+		<% include ajaxLoading.ejs %>
+	</body>
+
+</html>

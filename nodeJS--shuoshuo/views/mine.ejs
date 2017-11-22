@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="/favicon.ico">
+
+		<title>我的微博</title>
+
+		<!-- Bootstrap core CSS -->
+		<link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="/css/mine.css" />
+	</head>
+
+	<body>
+		<!--引入公共部分-->
+		<% include nav.ejs %>
+		<!-- Main jumbotron for a primary marketing message or call to action -->
+		
+		<h2 class="container title padding-top-50"><%= person[0].username %> 的主页</h2>
+		<div class="container">
+			<!-- Example row of columns -->
+			<div class="row" id="all-content">
+				<% if(content.length > 0){ %>
+				
+					<% for(var i = 0; i < content.length; i++){ %>
+						<div class="col-md-4 one-part">
+							<div class="person-title">
+								<img src="/<%= person[0].avatar %>" class="person-avatar" alt="" title="" />
+								<span><%= content[i].username %> 说:</span>
+							</div>
+							<p class="content"><%= content[i].content %></p>
+							<span class="messge-detail" data-id="<%= content[i]._id %>">查看详情</span>
+						</div>
+					<% } %>
+				<% }else{ %>
+					<span>您还没发表说说哦......</span>
+				<%}%>
+			</div>
+			<div class="page-btns" username="<%= username %>">
+				<% for(var i = 0; i < count; i++){ %>
+					<span class="page-number"><%= i+1 %></span>
+				<% } %>
+			</div>
+			<hr />
+
+			<footer>
+				<p>&copy; 2017 Company, Inc.</p>
+			</footer>
+		</div>
+		<!-- /container -->
+		<script src="/js/jquery-3.2.1.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/warnLayer.js"></script>
+		<script src="/js/mine.js"></script>
+		<!--信息详细窗口-->
+		<% include messageDetail.ejs %>
+	</body>
+
+</html>

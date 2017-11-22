@@ -1,0 +1,143 @@
+﻿
+<link rel="stylesheet" href="/css/jquery.Jcrop.min.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/css/cut.css" />
+<div class="change-layer" id="change-layer">
+	<div class="change-content" id="change-content">
+		<div class="jc-demo-box">
+			<img src="<%= avatar %>" id="target" alt="" />
+		</div>
+		
+		<button id="btns">获取坐标</button>
+		<div class="select-file">
+			<a href="javascript:;" class="file">选择文件
+				<input type="file" name="" id="files">
+			</a>
+		</div>
+	</div>
+</div>
+
+<script src="js/jquery.Jcrop.min.js"></script>
+	<script type="text/javascript">
+	jQuery(function($){
+		var cutLayerWidth = parseInt( document.body.clientWidth * 0.8 * 0.45 );
+		//console.log(cutLayerWidth);
+		$(".jc-demo-box").css({"width":cutLayerWidth,"height":cutLayerWidth});
+
+		// Create variables (in this scope) to hold the API and image size
+		var jcrop_api,
+			boundx,
+			boundy,
+
+			// Grab some information about the preview pane
+			$preview = $('#preview-pane'),
+			$pcnt = $('#preview-pane .preview-container'),
+			$pimg = $('#preview-pane .preview-container img'),
+
+			xsize = $pcnt.width(),
+			ysize = $pcnt.height();
+			
+		$('#target').Jcrop({
+		  touchSupport: true,   //支持触摸
+		  //allowSelect: false,   //是否出现选择框
+		  onChange: updatePreview,
+		  onSelect: updatePreview
+		  //aspectRatio: xsize / ysize   //约束选框的比例
+		},function(){
+		  // Use the API to get the real image size
+		  //获取图片在页面上显示的实际宽、高  
+		  var bounds = this.getBounds();
+		  boundx = bounds[0];
+		  boundy = bounds[1];
+		  // Store the API in the jcrop_api variable
+		  jcrop_api = this;
+		  // Move the preview into the jcrop container for css positioning
+		  /*
+		  //获取图片的 SRC ,创建一个新图片并将SRC赋予新图片,获取图片的原始宽、高
+		  console.log($('#target').attr("src"));
+		  var $Img = new Image();
+		  $Img.src = $('#target').attr("src");
+		  $Img.onload = function(){
+			var _height = $Img.height;
+			var _width = $Img.width;
+			console.log("height:" + _height);
+		  }
+		  */
+		  $preview.appendTo(jcrop_api.ui.holder);
+		});
+		
+
+		function updatePreview(c)
+		{
+		  if (parseInt(c.w) > 0)
+		  {
+			var rx = xsize / c.w;
+			var ry = ysize / c.h;
+
+			$pimg.css({
+			  width: Math.round(rx * boundx) + 'px',
+			  height: Math.round(ry * boundy) + 'px',
+			  marginLeft: '-' + Math.round(rx * c.x) + 'px',
+			  marginTop: '-' + Math.round(ry * c.y) + 'px'
+			});
+		  }
+		};
+		//获取裁剪图片的坐标
+		$("#btns").click(function(){
+			var selectWidth = $(".jcrop-holder>div:first-child").width();
+			var selectHeight = $(".jcrop-holder>div:first-child").height();
+			var selectLeft = parseInt( $(".jcrop-holder>div:first-child").css("left") );
+			var selectTop = parseInt( $(".jcrop-holder>div:first-child").css("top") );
+			var selectDisplsy = $(".jcrop-holder>div:first-child").css("display");
+			//console.log(selectDisplsy);
+			if((selectWidth === 0 && selectHeight === 0 && selectLeft === 0 && selectTop === 0) || (selectDisplsy === "none")){
+				alert("请选择图片要裁剪的区域。");
+				return false;
+			}
+			console.log(selectWidth + ";" + selectHeight + ";" + selectLeft + ";" + selectTop);
+			//选择裁剪框的坐标
+			var selectCoordinate = {
+				
+			};
+			$.get("/doJcrop", {
+				"W": selectWidth,
+				"H": selectHeight,
+				"L": selectLeft,
+				"T": selectTop
+			}, function(response){
+				console.log(response);
+			});
+		});
+		//选择图片
+		$("#files").on("change",function(){
+			//当文件没有更改时，不执行下面的代码
+			if(this.files.length !== 1){
+				return false;
+			}
+			var url = getObjectURL(this.files[0]);
+			//图片重绘
+			var resetImage = new Image();
+			resetImage.src = url;
+			resetImage.onload = function(){
+				jcrop_api.setImage(url);
+				$pimg.attr("src", url);
+				boundx = resetImage.width;
+				boundy = resetImage.height;
+			}
+			
+		});
+
+	  });
+	//获取图片的路径
+	function getObjectURL(file) {
+		var url = null;
+		if (window.createObjectURL != undefined) {
+			url = window.createObjectURL(file)
+		} else if (window.URL != undefined) {
+			url = window.URL.createObjectURL(file)
+		} else if (window.webkitURL != undefined) {
+			url = window.webkitURL.createObjectURL(file)
+		}
+		return url
+	};
+
+</script>

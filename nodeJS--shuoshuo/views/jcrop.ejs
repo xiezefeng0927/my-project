@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<link rel="stylesheet" href="/css/jquery.Jcrop.min.css" type="text/css" />
+	<style type="text/css">
+		/*#target{
+			width:200px;
+			height:200px;
+		}*/
+		/* Apply these styles only when #preview-pane has
+		   been placed within the Jcrop widget */
+		.jcrop-holder #preview-pane {
+		  display: block;
+		  position: absolute;
+		  z-index: 2000;
+		  top: 10px;
+		  right: -280px;
+		  padding: 6px;
+		  border: 1px rgba(0,0,0,.4) solid;
+		  background-color: white;
+
+		  -webkit-border-radius: 6px;
+		  -moz-border-radius: 6px;
+		  border-radius: 6px;
+
+		  -webkit-box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+		  -moz-box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+		  box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+		}
+
+		/* The Javascript code will set the aspect ratio of the crop
+		   area based on the size of the thumbnail preview,
+		   specified here */
+		#preview-pane .preview-container {
+		  width: 100px;
+		  height: 100px;
+		  overflow: hidden;
+		}
+		/*input 上传选择框的样式*/
+		.file {
+			position: relative;
+			display: inline-block;
+			background: #D0EEFF;
+			border: 1px solid #99D3F5;
+			border-radius: 4px;
+			padding: 4px 12px;
+			overflow: hidden;
+			color: #1E88C7;
+			text-decoration: none;
+			text-indent: 0;
+			line-height: 20px;
+		}
+		.file input {
+			width:100%;
+			height:100%;
+			position: absolute;
+			font-size: 100px;
+			right: 0;
+			top: 0;
+			opacity: 0;
+		}
+		.file:hover {
+			background: #AADFFD;
+			border-color: #78C3F3;
+			color: #004974;
+			text-decoration: none;
+		}
+		.upload-btns{
+			background:none;
+			border:none;
+			outline:none;
+			color:#fff;
+			background-color:#456789;
+			cursor:pointer;
+			padding:10px 20px;
+			border-radius:5px;
+			margin-top:20px;
+			margin-left:10px;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="jc-demo-box">
+	  <img src="/avatar2/<%= avatar %>" id="target" alt="[Jcrop Example]" />
+
+	  <div id="preview-pane">
+		<div class="preview-container">
+		  <img src="/avatar2/<%= avatar %>" class="jcrop-preview" alt="Preview" />
+		</div>
+	  </div>
+	</div>
+	<button id="btns" class="upload-btns">确认剪裁！</button>
+	<div class="select-file" style="display:none;">
+		<a href="javascript:;" class="file">选择文件
+			<input type="file" name="" id="files">
+		</a>
+	</div>
+	
+	<script src="/js/jquery-3.2.1.js" type="text/javascript"></script>
+	<script type="text/javascript" src="/js/warnLayer.js"></script>
+	<script src="/js/jquery.Jcrop.min.js"></script>
+	<script type="text/javascript">
+	    jQuery(function($){
+
+		    // Create variables (in this scope) to hold the API and image size
+		    var jcrop_api,
+		        boundx,
+		        boundy,
+
+		        // Grab some information about the preview pane
+		        $preview = $('#preview-pane'),
+		        $pcnt = $('#preview-pane .preview-container'),
+		        $pimg = $('#preview-pane .preview-container img'),
+
+		        xsize = $pcnt.width(),
+		        ysize = $pcnt.height();
+				
+		    $('#target').Jcrop({
+			  touchSupport: true,   //支持触摸
+			  //allowSelect: false,   //是否出现选择框
+		      onChange: updatePreview,
+		      onSelect: updatePreview
+		      //aspectRatio: xsize / ysize   //约束选框的比例
+		    },function(){
+		      // Use the API to get the real image size
+			  //获取图片在页面上显示的实际宽、高  
+		      var bounds = this.getBounds();
+		      boundx = bounds[0];
+		      boundy = bounds[1];
+		      // Store the API in the jcrop_api variable
+		      jcrop_api = this;
+		      // Move the preview into the jcrop container for css positioning
+			  /*
+			  //获取图片的 SRC ,创建一个新图片并将SRC赋予新图片,获取图片的原始宽、高
+			  console.log($('#target').attr("src"));
+			  var $Img = new Image();
+			  $Img.src = $('#target').attr("src");
+			  $Img.onload = function(){
+				var _height = $Img.height;
+				var _width = $Img.width;
+				console.log("height:" + _height);
+			  }
+			  */
+		      $preview.appendTo(jcrop_api.ui.holder);
+		    });
+			
+
+		    function updatePreview(c)
+		    {
+		      if (parseInt(c.w) > 0)
+		      {
+		        var rx = xsize / c.w;
+		        var ry = ysize / c.h;
+
+		        $pimg.css({
+		          width: Math.round(rx * boundx) + 'px',
+		          height: Math.round(ry * boundy) + 'px',
+		          marginLeft: '-' + Math.round(rx * c.x) + 'px',
+		          marginTop: '-' + Math.round(ry * c.y) + 'px'
+		        });
+		      }
+		    };
+			//获取裁剪图片的坐标
+			$("#btns").click(function(){
+				var selectWidth = $(".jcrop-holder>div:first-child").width();
+				var selectHeight = $(".jcrop-holder>div:first-child").height();
+				var selectLeft = parseInt( $(".jcrop-holder>div:first-child").css("left") );
+				var selectTop = parseInt( $(".jcrop-holder>div:first-child").css("top") );
+				var selectDisplsy = $(".jcrop-holder>div:first-child").css("display");
+				//console.log(selectDisplsy);
+				if((selectWidth === 0 && selectHeight === 0 && selectLeft === 0 && selectTop === 0) || (selectDisplsy === "none")){
+					alert("请选择图片要裁剪的区域。");
+					return false;
+				}
+				console.log(selectWidth + ";" + selectHeight + ";" + selectLeft + ";" + selectTop);
+				
+				$.get("/doJcrop", {
+					"W": selectWidth,
+					"H": selectHeight,
+					"X": selectLeft,
+					"Y": selectTop
+				}, function(response){
+					var result = typeof response == "string" ? JSON.parse(response) : response;
+					if(result.result == 1){
+						warnLayer("成功更换头像，3秒后自动跳转首页！",function(){
+							clearInterval(timer);
+							window.location.href = "/";
+						})
+						var timer = setInterval(function(){
+							window.location.href = "/";
+						},3000)
+					}else if(result.result == -1){
+						warnLayer("裁剪失败！");
+					}else if(result.result == -2){
+						warnLayer("裁剪成功但更新数据库失败，请重试一次...");
+					}else{
+						warnLayer("服务器未响应，请稍后再试...");
+					}
+				});
+			});
+			//选择图片
+			$("#files").on("change",function(){
+				//当文件没有更改时，不执行下面的代码
+				if(this.files.length !== 1){
+					return false;
+				}
+				var url = getObjectURL(this.files[0]);
+				//图片重绘
+				var resetImage = new Image();
+				resetImage.src = url;
+				resetImage.onload = function(){
+					jcrop_api.setImage(url);
+					$pimg.attr("src", url);
+					boundx = resetImage.width;
+					boundy = resetImage.height;
+				}
+				
+			});
+
+		  });
+		//获取图片的路径
+		function getObjectURL(file) {
+			var url = null;
+			if (window.createObjectURL != undefined) {
+				url = window.createObjectURL(file)
+			} else if (window.URL != undefined) {
+				url = window.URL.createObjectURL(file)
+			} else if (window.webkitURL != undefined) {
+				url = window.webkitURL.createObjectURL(file)
+			}
+			return url
+		};
+
+	</script>
+</body>
+</html>

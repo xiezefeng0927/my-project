@@ -1,0 +1,188 @@
+﻿<style type="text/css">
+	.wrap-message-detail{
+		width:0;
+		height:100%;
+		position:fixed;
+		left:50%;
+		top:0;
+		background-color:rgba(0,0,0,0.8);
+		display:none;
+	}
+	.wrap-message-detail .message-detail{
+		width:300px;
+		height:70%;
+		position:absolute;
+		left:50%;
+		top:-1500px;
+		transform:translate(-50%, -50%);
+		-o-transform:translate(-50%, -50%);
+		-ms-transform:translate(-50%, -50%);
+		-moz-transform:translate(-50%, -50%);
+		-webkit-transform:translate(-50%, -50%);
+		background-color:#fff;
+		border-radius:6px;
+		-moz-border-radius:6px;
+		-webkit-border-radius:6px;
+	}
+	.message-detail .detail-title{
+		height:10%;
+		border-bottom:2px solid #aaa; 
+		-moz-box-shadow:0 2px 10px #666;
+		-webkit-box-shadow:0 2px 10px #666;
+		box-shadow:0 2px 10px #666;
+		text-align:center;
+		box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		-webkit-box-sizing:border-box;
+		position:relative;
+		/*子元素的对齐方式*/
+		/* Firefox */
+		display:-moz-box;
+		-moz-box-pack:center;
+		-moz-box-align:center;
+
+		/* Safari, Chrome, and Opera */
+		display:-webkit-box;
+		-webkit-box-pack:center;
+		-webkit-box-align:center;
+
+		/* W3C */
+		display:box;
+		box-pack:center;
+		box-align:center;
+	}
+	.detail-title .title-d{
+		color:#345012;
+		font-size:16px;
+	}
+	.detail-title .close-box{
+		display:block;
+		width:20px;
+		height:20px;
+		text-align:center;
+		line-height:20px;
+		color:#000;
+		position:absolute;
+		right:10px;
+		top:50%;
+		margin-top:-10px;
+		cursor:pointer;
+		font-size:16px;
+	}
+	.message-detail .detail-content{
+		height:80%;
+		width:100%;
+		box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		-webkit-box-sizing:border-box;
+		overflow-y:auto;
+		overflow-x:hidden;
+	}
+	.detail-content .user-time{
+		height:30px;
+		line-height:30px;
+		font-size:12px;
+	}
+	.user-time .name{
+		float:left;
+		padding-left:5px;
+		color:#323232;
+	}
+	.user-time .time{
+		float:right;
+		padding-right:5px;
+		color:#f0f;
+	}
+	.detail-content .publish-message{
+		width:100%;
+		padding:0 5px;
+	}
+	.publish-message .say-content{
+		display:block;
+	}
+	.publish-message .dianzan{
+		border-top:1px solid #fff;
+		background-color:#ccc;
+		font-size:0;
+	}
+	.publish-message .dianzan span{
+		display:inline-block;
+		margin:0 3px;
+		font-size:12px;
+		vertical-align:middle;
+	}
+	.publish-message .pinglun{
+		background:#ccc;
+		margin-top:3px;
+	}
+	.publish-message .pinglun span{
+		display:block;
+		line-height:20px;
+		font-size:12px;
+		color:#101010;
+		margin:3px 0;
+	}
+
+	.message-detail .detail-footer{
+		height:10%;
+		border-top:2px solid #aaa; 
+		-moz-box-shadow:0 -2px 10px #666;
+		-webkit-box-shadow:0 -2px 10px #666;
+		box-shadow:0 -2px 10px #666;
+		text-align:center;
+		box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		-webkit-box-sizing:border-box;
+	}
+</style>
+
+<div class="wrap-message-detail" id="wrap-message-detail">
+	<div class="message-detail" id="message-detail">
+		<div class="detail-title">
+			<span class="title-d">说说详细信息展示</span>
+			<span class="close-box" id="close-box">&times;</span>
+		</div>
+		<div class="detail-content">
+			<div class="user-time">
+				<span class="name">username</span>
+				<span class="time">2017-11-10 17:51:30</span>
+			</div>
+			<div class="publish-message">
+				<span class="say-content">123123 12312312312312 312312312312312 3123123123123123123 1231231231231231  231231231 231231231231231 2312312312 12312312312 3123123 123123 1231231 231231231 231231231 231231231 23123 23123123 123123 1231 231 23123123123123 12312312 3123123123 123123123 123123 123123 1231231 23123 12312312 312312 312312 31231231 212312312312 312312312 3123123 1231231 231231 231231 231231 1231231 231231 2312312312312 3123123123123123123 1231231231231231  231231231 231231231231231 2312312312 12312312312 3123123 123123 1231231 231231231 231231231 231231231 23123 23123123 123123 1231 231 23123123123123 12312312 3123123123 123123123 123123 123123 1231231 23123 12312312 312312 312312 31231231 212312312312 312312312 3123123 1231231 231231 231231 231231 1231231 231231</span>
+				<div class="" id="dianzan"><!--这里有点赞是动态添加dianzan这个类-->
+					<span>赞</span>
+					<span>赞</span>
+					<span>赞</span>
+				</div>
+				<div class="" id="pinglun"><!--这里有点赞是动态添加pinglun这个类-->
+					<span>username:啥地方哭哈萨克的积分换啥地方哭哈萨克的积分换啥地方哭哈萨克的积分换</span>
+					<span>username:啥地方哭哈萨克的积分换</span>
+					<span>username:啥地方哭哈萨克的积分换</span>
+				</div>
+			</div>
+		</div>
+		<div class="detail-footer"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(function(){
+		//显示信息详情
+		$("#close-box").click(function(){
+			//console.log("in");
+			$("#message-detail").animate({"top":"-1500px"}, 200, function(){
+				$("#wrap-message-detail").animate({"width":"0", "left":"50%"}, 200);
+			})
+		});
+		//详情的按钮  ===设置为公共的，注意类名要一致
+		$(document).on("click", ".messge-detail", function(){
+			var id = $(this).attr("data-id");
+			$.get("/getOneContent?id=" + id, function(datas){
+				console.log(datas);
+			})
+			$("#wrap-message-detail").css({"display": "block"}).animate({"width":"100%", "left":"0"}, 200, function(){
+				$("#message-detail").animate({"top":"50%"}, 200);
+			});
+		})
+	})
+</script>

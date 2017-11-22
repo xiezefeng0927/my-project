@@ -1,0 +1,264 @@
+﻿
+<style type="text/css">
+	/*loading 样式*/
+	.wrap-ajax-loading{
+		position: fixed;
+		top:0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: rgba(0,0,0,0.4);
+		z-index: 9998;
+	}
+	.ajax-loading{
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -50px 0 0 -30px;
+        z-index: 9999;
+        -webkit-animation: load-18 3s linear infinite;
+    }
+    .ajax-loading div{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+    .ajax-loading span{
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #99CC66;
+        position: absolute;
+        left: 50%;
+        margin-top: -10px;
+        margin-left: -10px;
+        -webkit-animation: changeBgColor-18 3s ease infinite;
+    }
+    @-webkit-keyframes load-18{
+        0%{
+            -webkit-transform: rotate(0deg);
+        }
+        33.3%{
+            -webkit-transform: rotate(120deg);
+        }
+        66.6%{
+            -webkit-transform: rotate(240deg);
+        }
+        100%{
+            -webkit-transform: rotate(360deg);
+        }
+    }
+    @-moz-keyframes load-18{
+    	0%{
+            -webkit-transform: rotate(0deg);
+        }
+        33.3%{
+            -webkit-transform: rotate(120deg);
+        }
+        66.6%{
+            -webkit-transform: rotate(240deg);
+        }
+        100%{
+            -webkit-transform: rotate(360deg);
+        }
+    }
+    @-ms-keyframes load-18{
+    	0%{
+            -webkit-transform: rotate(0deg);
+        }
+        33.3%{
+            -webkit-transform: rotate(120deg);
+        }
+        66.6%{
+            -webkit-transform: rotate(240deg);
+        }
+        100%{
+            -webkit-transform: rotate(360deg);
+        }
+    }
+    @-o-keyframes load-18{
+    	0%{
+            -webkit-transform: rotate(0deg);
+        }
+        33.3%{
+            -webkit-transform: rotate(120deg);
+        }
+        66.6%{
+            -webkit-transform: rotate(240deg);
+        }
+        100%{
+            -webkit-transform: rotate(360deg);
+        }
+    }
+    @keyframes load-18{
+    	0%{
+            -webkit-transform: rotate(0deg);
+        }
+        33.3%{
+            -webkit-transform: rotate(120deg);
+        }
+        66.6%{
+            -webkit-transform: rotate(240deg);
+        }
+        100%{
+            -webkit-transform: rotate(360deg);
+        }
+    }
+    @-webkit-keyframes changeBgColor-18{
+        0%,100%{
+            background: #99CC66;
+        }
+        33.3%{
+            background: #FFFF66;
+        }
+        66.6%{
+            background: #FF6666;
+        }
+    }
+    @-moz-keyframes changeBgColor-18{
+        0%,100%{
+            background: #99CC66;
+        }
+        33.3%{
+            background: #FFFF66;
+        }
+        66.6%{
+            background: #FF6666;
+        }
+    }
+    @-ms-keyframes changeBgColor-18{
+        0%,100%{
+            background: #99CC66;
+        }
+        33.3%{
+            background: #FFFF66;
+        }
+        66.6%{
+            background: #FF6666;
+        }
+    }
+    @-o-keyframes changeBgColor-18{
+        0%,100%{
+            background: #99CC66;
+        }
+        33.3%{
+            background: #FFFF66;
+        }
+        66.6%{
+            background: #FF6666;
+        }
+    }
+    @keyframes changeBgColor-18{
+        0%,100%{
+            background: #99CC66;
+        }
+        33.3%{
+            background: #FFFF66;
+        }
+        66.6%{
+            background: #FF6666;
+        }
+    }
+    .ajax-loading div:nth-child(2){
+        -webkit-transform: rotate(120deg);
+    }
+    .ajax-loading div:nth-child(3){
+        -webkit-transform: rotate(240deg);
+    }
+    .ajax-loading div:nth-child(2) span{
+        -webkit-animation-delay: 1s;
+    }
+    .ajax-loading div:nth-child(3) span{
+        -webkit-animation-delay: 2s;
+    }
+    /*loading失败样式*/
+    .wrap-error-warning{
+    	position: fixed;
+    	top: 0;
+    	right: 0;
+    	bottom: 0;
+    	left: 0;
+    	background-color: rgba(0,0,0,0.5);
+    	z-index: 9998;
+    }
+    .error-warning{
+    	width: 250px;
+    	position: absolute;
+    	left: 50%;
+    	top: 40%;
+    	background-color: #fff;
+    	text-align: center;
+    	padding: 15px 0;
+    	font-size: 14px;
+    	transform: translate(-50%, -50%);
+    	-o-transform: translate(-50%, -50%);
+    	-ms-transform: translate(-50%, -50%);
+    	-moz-transform: translate(-50%, -50%);
+    	-webkit-transform: translate(-50%, -50%);
+    	border-radius: 5px;
+    	-webkit-border-radius: 5px;
+    	-moz-border-radius: 5px;
+    	z-index: 9999;
+    }
+    .warning-content{
+    	height: 24px;
+    	line-height: 24px;
+    	color: red;
+    }
+    .choose-buttons{
+    	font-size: 0;
+    	margin-top: 20px;
+    }
+    .choose-buttons button{
+    	background: none;
+    	border: none;
+    	margin: 0 10px;
+    	padding: 5px 10px;
+    	color: #fff;
+    	outline: none;
+    	cursor: pointer;
+    	border-radius: 3px;
+    	-webkit-border-radius: 3px;
+    	-moz-border-radius: 3px;
+    }
+    .choose-buttons .send-ajax-again{
+    	background-color: #e71199;
+    }
+    .choose-buttons .ajax-cancel{
+    	background-color: #38102a;
+    }
+</style>
+<script type="text/javascript">
+	;
+	//ajax 的全局处理函数
+	//.ajaxComplete()  当Ajax请求完成后注册一个回调函数
+	$(document).ajaxSend(function(){
+		var _ajaxHtml = "<div class='wrap-ajax-loading'>";
+			_ajaxHtml += "<div class='ajax-loading'>";
+			_ajaxHtml += "<div><span></span></div><div><span></span></div><div><span></span></div>";
+			_ajaxHtml += "</div></div>";
+		$("body").append(_ajaxHtml);
+	}).ajaxSuccess(function(){
+		$(".wrap-ajax-loading").remove();
+	}).ajaxError(function(){
+		var _errorHtml = '<div class="wrap-error-warning">';
+			_errorHtml += '<div class="error-warning">';
+			_errorHtml += '<p class="warning-content">请求数据失败</p>';
+			_errorHtml += '<div class="choose-buttons">';
+			_errorHtml += '<button class="send-ajax-again" id="send-ajax-again">刷新</button>';
+			_errorHtml += '<button class="ajax-cancel" id="ajax-cancel">取消</button>';
+			_errorHtml += '</div></div></div>';
+		$(".wrap-ajax-loading").remove();
+		$("body").append( _errorHtml );
+		$("#send-ajax-again").click(function(){  //点击“刷新”，重新加载页面
+			window.location.reload();
+		});
+		$("#ajax-cancel").click(function(){  //点击“取消”，如果有上一级则返回上一级，没有则删除遮罩层后保持现有动作
+			window.history.back();
+			$(".wrap-error-warning").remove();
+		});
+	});
+</script>
