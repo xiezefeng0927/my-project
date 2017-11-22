@@ -21,6 +21,7 @@ exports.showIndex = function(req, res, next){
 	//判断用户是否在登录状态并检索是否有设置头像，没有则使用系统默认头像
 	var avatar = "moren.jpg";   //系统默认头像
 	if(req.session.login == "1"){
+		console.log("我已登录");
 		db.findData("users", {"username": req.session.username}, function(err, result){
 			avatar = result[0].avatar;
 			res.render("index", {
@@ -43,6 +44,7 @@ exports.showIndex = function(req, res, next){
 
 //注册
 exports.showRegist = function(req, res, next){
+	console.log("zhucechenggong");
 	res.render("regist", {
 		"islogin": req.session.login == "1" ? true : false,
 		"username": req.session.login == "1" ? req.session.username : "",
