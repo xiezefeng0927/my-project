@@ -1,0 +1,157 @@
+
+html {
+    /*-ms-touch-action: none;*/
+}
+
+body {
+    font-size: 12px;
+    font-family: ubuntu, helvetica, arial;
+    overflow: hidden;
+    /* this is important to prevent the whole page to bounce */
+}
+
+.body-content {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 0 0 0;
+    /*background: #ccc;*/
+    overflow: hidden;
+}
+
+.body-move {
+    position: absolute;
+    z-index: 1;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    padding: 0 10px;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    /*-webkit-touch-callout: none;*/
+    /*-webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;*/
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -o-text-size-adjust: none;
+    text-size-adjust: none;
+    box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    padding-bottom: 20px;
+}
+
+.marquee-content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    line-height: 30px;
+    font-size: 14px;
+    color: red;
+}
+p,div {
+	width:100%;
+	text-align: center;
+	line-height: 24px;
+}
+
+.title, .introduce, .describe-1, .describe-2, .decrible-43 {
+	text-align: left;
+}
+
+.desc-image {
+	
+}
+
+.desc-image .image{
+	/*width: 100%;
+	height: 100%;*/
+	max-height: 100%;
+	max-width: 100%;
+	display: none;
+	margin: 0 auto;
+}
+
+.title{
+	color: #000000;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.introduce {
+	color: #888;
+}
+
+.introduce a {
+	padding-left: 8px;
+	color: lightskyblue;
+}
+
+.explain{
+	height: 14vw;
+	line-height: 14vw;
+	color: #fff;
+	font-size: 14px;
+	background-color: red;
+	margin: 10px 0;
+	display: flex;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -webkit-box;
+	-moz-box-align: center;
+	-webkit-box-align: center;
+	-ms-box-align: center;
+	-o-box-align: center;
+	box-align: center;
+	-webkit-box-pack: center;
+	-moz-box-pack: center;
+	-ms-box-pack:center;
+	-o-box-pack:center;
+	box-pack:center;
+	text-align: center;
+}
+
+.describe-2{
+	margin-top: 15px;
+}
+
+.image-title {
+	background-color: #101010;
+	color: #fff;
+	font-size: 12px;
+	font-weight: 700;
+	padding: 2px 4px;
+}
+
+.desc-image {
+	margin: 20px 0;
+}
+
+.desc-image a {
+	display: block;
+}
+
+.desc-image .specail{
+	width: 60%;
+	display: block;
+	margin-top: 20px;
+}
+
+.bg-image {
+	height:7px;
+	margin: 0 0 5px 0;
+	background: url(../image/bg.jpg) no-repeat center;
+	background-size: 100%;
+	-webkit-background-size: 100%;
+}
