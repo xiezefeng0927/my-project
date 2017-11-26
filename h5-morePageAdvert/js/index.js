@@ -19,7 +19,6 @@
     			removeSecondPageClass();
     		}
     		if (index === 2) {  //第二屏
-    			//console.log("第二屏");
     			$(".explain-1").addClass('shake');
     			$(".explain-2").addClass('flash');
     			$(".explain-3").addClass('swing');

@@ -40,19 +40,24 @@
 }
  body {
     color: #FFFFFF;
+    background-color: rgba(36,136,236,0.4);
 }
 .section1 {
-    background-color: rgba(36,136,236,0.4);
+	height: 100%;
+    /*background-color: rgba(36,136,236,0.4);*/
     position: relative;
 }
 .section2 {
-    /*background-color: #2EBE21;*/
+	display: none;
+    background-color: #fff;
 }
 .section3 {
+	display: none;
 	background: url(../image/bg.jpg) no-repeat center;
 	background-size: cover;
 }
 .section4 {
+	display: none;
     background-color: #FF9900;
 }
 
