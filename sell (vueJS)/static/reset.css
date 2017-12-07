@@ -107,7 +107,8 @@ summary {
     display: block;
 }
 
-nav ul {
+ul,
+ul li {
     list-style: none;
 }
 
@@ -174,8 +175,4 @@ hr {
 input,
 select {
     vertical-align: middle;
-}
-
-.nav .router-link-active {
-    color: red;
 }

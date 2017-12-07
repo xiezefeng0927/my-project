@@ -43,7 +43,7 @@
                             <div class="line"></div>
                         </div>
                         <ul v-if="seller.supports" class="supports">
-                            <li v-for="item in seller.supports" class="support-item" track-by="$index">
+                            <li v-for="(item, $index) in seller.supports" class="support-item" :key="$index" track-by="$index">
                                 <span class="icon" :class="classMap[item.type]"></span>
                                 <span class="text">{{item.description}}</span>
                             </li>

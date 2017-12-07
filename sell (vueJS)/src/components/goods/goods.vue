@@ -2,7 +2,7 @@
     <div class="goods">
         <div class="menu-wrapper" ref="menu">
             <ul>
-                <li v-for="(item, $index) in goods" class="menu-item border-1px" :class="{'current': currentIndex === $index}" @click="selectMenu($index, $event)">
+                <li v-for="(item, $index) in goods" :key="$index" class="menu-item border-1px" :class="{'current': currentIndex === $index}" @click="selectMenu($index, $event)">
                     <span class="text">
                         <span v-show="item.type>0" class="icon" :class="classMap[item.type]"></span>{{item.name}}
                     </span>
@@ -11,10 +11,10 @@
         </div>
         <div class="foods-wrapper" ref="foods">
             <ul>
-                <li v-for="item in goods" class="food-list food-list-hook">
+                <li v-for="(item, $index) in goods" :key="$index" class="food-list food-list-hook">
                     <h2 class="title">{{item.name}}</h2>
                     <ul>
-                        <li v-for="food in item.foods" class="food-item border-1px">
+                        <li @click="checkedFoodDetail(food, $event)" v-for="(food, $index) in item.foods" :key="$index" class="food-item border-1px">
                             <div class="icon">
                                 <img width="57" height="57" :src="food.icon" />
                             </div>
@@ -29,19 +29,26 @@
                                     <span class="now">￥{{food.price}}</span>
                                     <span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
                                 </div>
+                                <div class="payhandle-wrapper">
+                                    <v-pay :food="food"  v-on:slideBall="slideB"></v-pay>
+                                </div>
                             </div>
                         </li>
                     </ul>
                 </li>
             </ul>
         </div>
-        <v-cart></v-cart>
+        <v-cart ref="cart" :selected-food="selectedFood" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></v-cart>
+        <v-food :food="selected" ref="food"></v-food>
     </div>
 </template>
 
 <script>
     import BScroll from "better-scroll";
     import cart from "../cart/cart.vue";
+    import payhandle from "../payhandle/payhandle.vue";
+    import food from '../food/food.vue';
+
     export default {
         name: 'goods',
         props: {
@@ -53,7 +60,8 @@
             return {
                 goods: [],
                 listHeight: [],
-                scrollY: 0
+                scrollY: 0,
+                selected: {}
             }
         },
         created: function() {
@@ -89,6 +97,17 @@
                     }
                 }
                 return 0;
+            },
+            selectedFood: function() {  //已选择的商品，这个是传给 cart 组件的
+                var foods = [];
+                this.goods.forEach(function(good) {
+                    good.foods.forEach(function(food) {
+                        if(food.count > 0) {
+                            foods.push(food);
+                        }
+                    });
+                })
+                return foods;
             }
         },
         methods: {
@@ -99,7 +118,8 @@
                     click: true   //允许点击
                 });
                 this.foodScroll = new BScroll(this.$refs.foods, {
-                    probeType: 3   //表示能实时监听到better-scroll滚动的位置
+                    probeType: 3,    //表示能实时监听到better-scroll滚动的位置
+                    click: true
                 });
 
                 this.foodScroll.on('scroll', function(_pos){
@@ -122,16 +142,32 @@
             selectMenu: function(index, event) {
                 if(!event._constructed){   //禁止pc端的默认事件，防止两次点击 
                     return false;
-                }  //左边菜单栏选择
-                console.log(index);
+                }  
+                //左边菜单栏选择
                 var foodList = this.$refs.foods.getElementsByClassName("food-list-hook");
                 var ele = foodList[index];
                 //跳转到指定的节点位置
                 this.foodScroll.scrollToElement(ele, 300);
+            },
+            checkedFoodDetail: function(food, event){
+                if(!event._constructed){   //禁止pc端的默认事件，防止两次点击 
+                    return false;
+                }
+                this.selected = food;
+                this.$refs.food.show();
+            },
+            slideB: function(ele) {
+                //console.log(ele);
+                //体验优化，异步执行下落动画
+                this.$nextTick(function() {
+                    this.$refs.cart.swiperBall(ele);
+                });
             }
         },
         components: {
-            'v-cart': cart
+            'v-cart': cart,
+            'v-pay': payhandle,
+            'v-food': food
         }
     }
 </script>
@@ -214,6 +250,7 @@
                     margin-right: 10px
                 .content
                     flex: 1
+                    position: relative
                     .name
                         height: 14px
                         line-height: 14px
@@ -245,5 +282,9 @@
                             text-decoration: line-through
                             font-size: 10px
                             color: rgb(147,153,159)
+                    .payhandle-wrapper
+                        position: absolute
+                        right: 0
+                        bottom: 0px
 
 </style>

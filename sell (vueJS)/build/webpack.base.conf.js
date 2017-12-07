@@ -4,6 +4,42 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 
+const express = require("express");
+
+//请求模拟数据
+var app = express()
+
+var appData = require('../data.json');
+var seller = appData.seller;
+var goods = appData.goods;
+var ratings = appData.ratings;
+var apiRoutes = express.Router();
+
+apiRoutes.get('/seller', function(req, res) {
+    res.json({
+        errno: 0,
+        data: seller
+    });
+});
+
+apiRoutes.get('/goods', function(req, res) {
+    res.json({
+        errno: 0,
+        data: goods
+    });
+});
+
+apiRoutes.get('/ratings', function(req, res) {
+    res.json({
+        errno: 0,
+        data: ratings
+    });
+});
+
+app.use('/api', apiRoutes);
+
+//END
+
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -25,6 +61,8 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      'src': resolve('src'),
+      'common': resolve('src/common')
     }
   },
   module: {

@@ -9,7 +9,9 @@ import seller from '@/components/seller/seller';
 Vue.use(Router)
 
 export default new Router({
-    routes: [{
+	linkActiveClass: 'active',   //自定义路由类名
+    routes: [
+    	{  //路由重定向
             path: '/',
             redirect: '/goods'
         },
