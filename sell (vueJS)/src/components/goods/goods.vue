@@ -39,7 +39,7 @@
             </ul>
         </div>
         <v-cart ref="cart" :selected-food="selectedFood" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></v-cart>
-        <v-food :food="selected" ref="food"></v-food>
+        <v-food :food="selected" ref="food" :position-top="positionTop"></v-food>
     </div>
 </template>
 
@@ -61,7 +61,8 @@
                 goods: [],
                 listHeight: [],
                 scrollY: 0,
-                selected: {}
+                selected: {},
+                positionTop: 20
             }
         },
         created: function() {
