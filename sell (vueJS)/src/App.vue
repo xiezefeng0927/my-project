@@ -7,23 +7,33 @@
       <div class="nav-item"><router-link to="/seller">商家</router-link></div>
     </div>
     <transition name="fade" mode="out-in">
-      <router-view :seller="seller"></router-view>
+      <keep-alive>
+        <router-view :seller="seller"></router-view>
+      </keep-alive>
     </transition>
   </div>
 </template>
 
 <script>
+  import {urlParse} from './common/js/util.js'
   import header from './components/header/header';
 export default {
   name: 'app',
   data: function() {
     return {
-			seller: {}
+			seller: {
+        id:(function(){
+          var param = urlParse();
+          return param.id;
+        })()
+      }
     };
   },
   created: function() {
-  	this.$http.get('../data.json').then(function(response){
-  		this.seller = response.body.seller;
+  	this.$http.get('../data.json?id=' + this.seller.id).then(function(response){
+      //this.seller = response.body.seller;
+      // 合并对象， 将 url 中的 id 合并到 seller 中
+      this.seller = Object.assign({}, this.seller, response.body.seller);
   	}, function(error){
   		console.log("请求数据失败！");
   	})
@@ -36,13 +46,14 @@ export default {
 
 <style scoped="scoped" lang="stylus" rel="stylesheet/stylus">
 @import "./common/stylus/mixin.styl"
-
+/*   路由切换过渡效果
 .fade-enter-active, .fade-leave-active
   transition: all .1s ease-in
 .fade-enter
   transform: translateX(100%)
 .fade-leave-active
   transform: translateX(-100%)
+*/
 .nav
 	display: flex
 	width: 100%
