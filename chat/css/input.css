@@ -1,0 +1,109 @@
+/*
+ 	created by Xie Zefeng on 2017/12/18
+ * *
+ */
+.display-box {
+	display: -moz-box;
+	display: -webkit-box;
+	display: box;
+	-moz-box-pack: center;
+	-webkit-box-pack: center;
+	box-pack: center;
+	-moz-box-align: center;
+	-webkit-box-align: center;
+	box-align: center;
+}
+
+.input-wrapper {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 50px;
+	background-color: #ddd;
+}
+
+.input-wrapper::after {
+	display: block;
+	content: '';
+	width: 100%;
+	height: 1px;
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+	position: absolute;
+	left: 0;
+	top: -1px;
+	transform: scaleY(0.5);
+	-o-transform: scaleY(0.5);
+	-ms-transform: scaleY(0.5);
+	-moz-transform: scaleY(0.5);
+	-webkit-transform: scaleY(0.5);
+}
+
+.input-wrapper .input-mode {
+	flex: 0 0 40px;
+	-ms-flex: 0 0 40px;
+	-moz-flex: 0 0 40px;
+	-webkit-flex: 0 0 40px;
+	position: relative;
+}
+
+.input-wrapper .input-mode .icon{
+	color: rgb(77,85,93);
+}
+
+.input-mode .circle {
+	display: block;
+	content: '';
+	width: 26px;
+	height: 26px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	border-radius: 50%;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border: 1px solid rgb(77,85,93);
+}
+
+.input-wrapper .input-content {
+	flex:1;
+	-ms-flex:1;
+	-moz-flex:1;
+	-webkit-flex:1;
+}
+
+.input-wrapper .input-content .content {
+	resize: none;
+	outline: none;
+	border: none;
+	display: block;
+	width: 88%;
+	line-height: 18px;
+	border-bottom: 1px solid limegreen;
+	background-color: #ddd;
+	overflow-x: hidden;
+	overflow-y: auto;
+	font-size: 12px;
+	color: rgb(77,85,93);
+}
+
+/*.input-wrapper .input-mode {
+	flex: 0 0 40px;
+}*/
+
+.input-wrapper .send-content {
+	flex: 0 0 80px;
+	-ms-flex: 0 0 80px;
+	-moz-flex: 0 0 80px;
+	-webkit-flex: 0 0 80px;
+}
+
+.input-wrapper .send-content .send {
+	padding: 8px 12px;
+	background-color: limegreen;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	color: #fff;
+	font-size: 12px;
+}

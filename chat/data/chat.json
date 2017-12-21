@@ -1,0 +1,383 @@
+{
+	"anthor": "Xie Zefeng",
+	"id": "201509130001",
+	"avatar": "http://i2.bvimg.com/597584/d7e6c5b1309678ad.jpg",
+	"phone": "13800138000",
+	"status": 200,
+	"success": true,
+	"explain":"数据中 content 的 type 字段等于 0 时代表的是接收到的信息, 等于 1 时代表的是自己主动发送的信息",
+	"friends":[
+	     {
+	    	 "name":"李雷",
+	    	 "id": "201712150001",
+	    	 "avatar": "http://i1.bvimg.com/597584/8ca42a6db5a9e004.jpg",
+	    	 "sex": "男",
+	    	 "phone": "10086",
+			 "accountNumber": "LLei886",
+			 "area": "中国 广东",
+			 "album": [
+				"http://i2.bvimg.com/597584/fea9cdacc54e024c.jpg",
+				"http://i2.bvimg.com/597584/2a98ddc7d16a7334.jpg",
+				"http://i2.bvimg.com/597584/fbbb1832287978c8.jpg"
+			 ],
+			 "autograph": "",
+	    	 "content": [
+	             {
+	            	 "type":0,
+	            	 "time": 1513301642000,
+	            	 "say": "你好，我是李雷！以后请多多指教。"
+	             },
+	             {
+	            	 "type":0,
+	            	 "time": 1513301643000,
+	            	 "say": "UI首页日俄牌速度"
+	             },
+	             {
+	            	 "type":1,
+	            	 "time": 1513301698000,
+	            	 "say": "你好，李雷！很高兴和你成为好友。"
+	             }
+	         ]
+	     },
+	     {
+	    	 "name":"张三",
+	    	 "id": "201712150002",
+	    	 "avatar": "http://i1.bvimg.com/597584/5b51081250f52f86.jpg",
+	    	 "sex": "男",
+	    	 "phone": "13500135135",
+			 "accountNumber": "zhangsan_ge002",
+			 "area": "广东 广州",
+			 "album": [],
+			 "autograph": "",
+	    	 "content": [
+	             {
+	            	 "type":0,
+	            	 "time": 1513337642000,
+	            	 "say": "你好，我是张三！以后请多多指教。"
+	             },
+	             {
+	            	 "type":0,
+	            	 "time": 1513341243000,
+	            	 "say": "UI首页日俄牌速度"
+	             },
+	             {
+	            	 "type":1,
+	            	 "time": 1513341298000,
+	            	 "say": "你好，张三！很高兴和你成为好友。"
+	             }
+	         ]
+	     },
+	     {
+	    	 "name":"张无忌",
+	    	 "id": "201712150003",
+	    	 "avatar": "http://i1.bvimg.com/597584/5328134761dc3944.jpg",
+	    	 "sex": "男",
+	    	 "phone": "10086",
+			 "accountNumber": "WDWJ_Zhang",
+			 "area": "内蒙古 呼伦贝尔",
+			 "album": [
+				"http://i2.bvimg.com/597584/fea9cdacc54e024c.jpg",
+				"http://i2.bvimg.com/597584/c628c3d33c1e8dc1.jpg",
+				"http://i2.bvimg.com/597584/56e73b2f0cb92b1b.jpg"
+			 ],
+			 "autograph": "",
+	    	 "content": [
+	             {
+	            	 "type":0,
+	            	 "time": 1513301642000,
+	            	 "say": "你好，我是李雷！以后请多多指教。"
+	             },
+	             {
+	            	 "type":0,
+	            	 "time": 1513301643000,
+	            	 "say": "UI首页日俄牌速度"
+	             },
+	             {
+	            	 "type":1,
+	            	 "time": 1513301698000,
+	            	 "say": "你好，李雷！很高兴和你成为好友。"
+	             }
+	         ]
+	     },
+	     {
+	    	 "name":"黄蓉",
+	    	 "id": "201712150004",
+	    	 "avatar": "http://i1.bvimg.com/597584/d351ca29cbdb9e4e.jpg",
+	    	 "sex": "女",
+	    	 "phone": "8888888888",
+			 "accountNumber": "huangrong_8888",
+			 "area": "中国 湖北",
+			 "album": [],
+			 "autograph": "",
+	    	 "content": [
+	             {
+	            	 "type":0,
+	            	 "time": 1513301643000,
+	            	 "say": "你好，我是一代英雄--黄蓉！以后请多多指教。"
+	             },
+	             {
+	            	 "type":0,
+	            	 "time": 1513337642000,
+	            	 "say": "UI首页日俄牌速度"
+	             },
+	             {
+	            	 "type":1,
+	            	 "time": 1513341298000,
+	            	 "say": "你好，李雷！很高兴和你成为好友。"
+	             }
+	         ]
+	     },
+	     {
+	    	 "name":"小龙女",
+	    	 "id": "201712150011",
+	    	 "avatar": "http://i1.bvimg.com/597584/0f5963bb13bf71f1.jpg",
+	    	 "sex": "女",
+	    	 "phone": "40013000000",
+			 "accountNumber": "挚爱一生之过",
+			 "area": "西安 终南山",
+			 "album": [
+				"http://i2.bvimg.com/597584/56e73b2f0cb92b1b.jpg"
+			 ],
+			 "autograph": "",
+	    	 "content": []
+	     },
+	     {
+	    	 "name":"佬板",
+	    	 "id": "201712150005",
+	    	 "avatar": "http://i1.bvimg.com/597584/d3e5706d8eb98e7b.jpg",
+	    	 "sex": "男",
+	    	 "phone": "4001000000",
+			 "accountNumber": "boss",
+			 "area": "中国 北京",
+			 "album": [],
+			 "autograph": "",
+	    	 "content": [
+	             {
+	            	 "type":0,
+	            	 "time": 1513301698000,
+	            	 "say": "你好，我是佬板，不是老板！以后请多多指教。"
+	             },
+	             {
+	            	 "type":0,
+	            	 "time": 1513337642000,
+	            	 "say": "UI首页日俄牌速度"
+	             },
+	             {
+	            	 "type":1,
+	            	 "time": 1513341243000,
+	            	 "say": "你好，李雷！很高兴和你成为好友。"
+	             }
+	         ]
+	     },
+	     {
+	    	 "name":"穆里尼奥",
+	    	 "id": "201712150006",
+	    	 "avatar": "http://i1.bvimg.com/597584/77a09077e62c6eb4.jpg",
+	    	 "sex": "男",
+	    	 "phone": "16855552223",
+			 "accountNumber": "mulinio_coach",
+			 "area": "葡萄牙 里斯本",
+			 "album": [
+				"http://i2.bvimg.com/597584/2a98ddc7d16a7334.jpg",
+				"http://i2.bvimg.com/597584/fbbb1832287978c8.jpg",
+				"http://i2.bvimg.com/597584/c628c3d33c1e8dc1.jpg"
+			 ],
+			 "autograph": "",
+	    	 "content": [
+	             {
+	            	 "type":0,
+	            	 "time": 1513301642000,
+	            	 "say": "你好，我是穆里尼奥！以后请多多指教。"
+	             },
+	             {
+	            	 "type":0,
+	            	 "time": 1513301643000,
+	            	 "say": "今天我跟瓜迪奥拉在暗自斗法，只可惜最后我还是敌不过他。"
+	             },
+	             {
+	            	 "type":1,
+	            	 "time": 1513301698000,
+	            	 "say": "你好，穆里尼奥！你简直就是足球界的奇才。赞..."
+	             }
+	         ]
+	     },
+	     {
+	    	 "name":"张小凡",
+	    	 "id": "201712150012",
+	    	 "avatar": "http://i1.bvimg.com/597584/4cf4549b32e4f70d.jpg",
+	    	 "sex": "男",
+	    	 "phone": "13866005545",
+			 "accountNumber": "ZXF_zhuxianzhuan",
+			 "area": "福建 福州 青云山",
+			 "album": [],
+			 "autograph": "",
+	    	 "content": []
+	     },
+	     {
+	    	 "name":"张珊珊",
+	    	 "id": "201712150007",
+	    	 "avatar": "http://i1.bvimg.com/597584/4e5e371558671381.jpg",
+	    	 "sex": "女",
+	    	 "phone": "16855552256",
+			 "accountNumber": "sport_zhang",
+			 "area": "广东 汕头",
+			 "album": [],
+			 "autograph": "",
+	    	 "content": [
+	             {
+	            	 "type":0,
+	            	 "time": 1513337642000,
+	            	 "say": "你好，我是穆里尼奥！以后请多多指教。"
+	             },
+	             {
+	            	 "type":0,
+	            	 "time": 1513341243000,
+	            	 "say": "今天我跟瓜迪奥拉在暗自斗法，只可惜最后我还是敌不过他。"
+	             },
+	             {
+	            	 "type":1,
+	            	 "time": 1513341298000,
+	            	 "say": "你好，穆里尼奥！你简直就是足球界的奇才。赞..."
+	             }
+	         ]
+	     },
+	     {
+	    	 "name":"传奇--加内特",
+	    	 "id": "201712150008",
+	    	 "avatar": "http://i1.bvimg.com/597584/16dbf3898716a7ab.jpg",
+	    	 "sex": "男",
+	    	 "phone": "16855552223",
+			 "accountNumber": "Garnett_BASKETBALL",
+			 "area": "美国 明尼阿波利斯",
+			 "album": [],
+			 "autograph": "",
+	    	 "content": [
+	             {
+	            	 "type":0,
+	            	 "time": 1513301642000,
+	            	 "say": "你好，我是穆里尼奥！以后请多多指教。"
+	             },
+	             {
+	            	 "type":0,
+	            	 "time": 1513301643000,
+	            	 "say": "今天我跟瓜迪奥拉在暗自斗法，只可惜最后我还是敌不过他。"
+	             },
+	             {
+	            	 "type":1,
+	            	 "time": 1513301698000,
+	            	 "say": "你好，穆里尼奥！你简直就是足球界的奇才。赞..."
+	             }
+	         ]
+	     },
+	     {
+	    	 "name":"孤岛求生",
+	    	 "id": "201712150013",
+	    	 "avatar": "http://i1.bvimg.com/597584/7eb948b346e822d7.jpg",
+	    	 "sex": "男",
+	    	 "phone": "13688812110",
+			 "accountNumber": "stronger",
+			 "area": "意大利 罗马",
+			 "album": [
+				"http://i2.bvimg.com/597584/fea9cdacc54e024c.jpg",
+				"http://i2.bvimg.com/597584/fbbb1832287978c8.jpg"
+			 ],
+			 "autograph": "",
+	    	 "content": []
+	     },
+	     {
+	    	 "name":"奥巴马",
+	    	 "id": "201712150009",
+	    	 "avatar": "http://i1.bvimg.com/597584/aba87fa96f17ba44.png",
+	    	 "sex": "男",
+	    	 "phone": "16855552223",
+			 "accountNumber": "president_OBM",
+			 "area": "美国 密歇根",
+			 "album": [],
+			 "autograph": "",
+	    	 "content": [
+	             {
+	            	 "type":0,
+	            	 "time": 1513337642000,
+	            	 "say": "你好，我是穆里尼奥！以后请多多指教。"
+	             },
+	             {
+	            	 "type":0,
+	            	 "time": 1513341243000,
+	            	 "say": "今天我跟瓜迪奥拉在暗自斗法，只可惜最后我还是敌不过他。"
+	             },
+	             {
+	            	 "type":1,
+	            	 "time": 1513341298000,
+	            	 "say": "你好，穆里尼奥！你简直就是足球界的奇才。赞..."
+	             }
+	         ]
+	     },
+	     {
+	    	 "name":"遇见未来",
+	    	 "id": "201712150014",
+	    	 "avatar": "http://i1.bvimg.com/597584/c21c6cb031d1cd61.jpg",
+	    	 "sex": "女",
+	    	 "phone": "8888888888",
+			 "accountNumber": "to_see_future",
+			 "area": "捷克 布拉格",
+			 "album": [],
+			 "autograph": "",
+	    	 "content": []
+	     },
+	     {
+	    	 "name":"无敌女强人",
+	    	 "id": "201712150010",
+	    	 "avatar": "http://i1.bvimg.com/597584/545f4d5b0111eb7f.jpg",
+	    	 "sex": "女",
+	    	 "phone": "16855552223",
+			 "accountNumber": "女汉子",
+			 "area": "中国 浙江",
+			 "album": [],
+			 "autograph": "",
+	    	 "content": [
+	             {
+	            	 "type":0,
+	            	 "time": 1513301643000,
+	            	 "say": "你好，我是无敌女强人！以后请多多指教。"
+	             },
+	             {
+	            	 "type":0,
+	            	 "time": 1513337642000,
+	            	 "say": "偷偷告诉你，其实我是男的哦。"
+	             },
+	             {
+	            	 "type":1,
+	            	 "time": 1513341298000,
+	            	 "say": "你好，无敌女强人！你简直就是足球界的奇才。赞..."
+	             }
+	         ]
+	     },
+	     {
+	    	 "name":"没有烟抽的日子",
+	    	 "id": "201712150015",
+	    	 "avatar": "http://i1.bvimg.com/597584/9323142e7d917766.jpg",
+	    	 "sex": "男",
+	    	 "phone": "8888888234",
+			 "accountNumber": "love_smoke",
+			 "area": "中国 江苏",
+			 "album": [
+				"http://i2.bvimg.com/597584/fea9cdacc54e024c.jpg",
+				"http://i1.bvimg.com/597584/c21c6cb031d1cd61.jpg"
+			],
+			 "autograph": "",
+	    	 "content": []
+	     },
+	     {
+	    	 "name":"最后的最后",
+	    	 "id": "201712150016",
+	    	 "avatar": "http://i1.bvimg.com/597584/c21c6cb031d1cd61.jpg",
+	    	 "sex": "女",
+	    	 "phone": "8888888234",
+			 "accountNumber": "不是最后的最后",
+			 "area": "海南 三亚",
+			 "album": [],
+			 "autograph": "",
+	    	 "content": []
+	     }
+	]
+}

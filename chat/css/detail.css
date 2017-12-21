@@ -1,0 +1,239 @@
+﻿/*
+	created by Xie Zefeng on 2017/12/19
+*/
+
+.detail-wrapper {
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom:0;
+	width: 100%;
+	background-color: #eee;
+	z-index:1;
+	transform: translate(0,0);
+	-o-transform: translate(0,0);
+	-ms-transform: translate(0,0);
+	-moz-transform: translate(0,0);
+	-webkit-transform: translate(0,0);
+}
+
+.detail-enter, .detail-leave-active {
+	transform: translateX(100%);
+	-o-transform: translateX(100%);
+	-ms-transform: translateX(100%);
+	-moz-transform: translateX(100%);
+	-webkit-transform: translateX(100%);
+}
+
+.detail-enter-active, .detail-leave-active {
+	transition: all .3s ease-in;
+	-o-transition: all .3s ease-in;
+	-ms-transition: all .3s ease-in;
+	-moz-transition: all .3s ease-in;
+	-webkit-transition: all .3s ease-in;
+}
+
+.detail-message {
+	position: absolute;
+	left: 0;
+	top: 50px;
+	bottom:0;
+	width: 100%;
+}
+
+.detail-message .detail {
+	width: 100%;
+	padding: 15px 0;
+}
+
+.detail .detail-header {
+	padding: 12px;
+	background-color: #fff;
+}
+
+.detail-header .avatar {
+	flex: 0 0 50px;
+	-ms-flex: 0 0 50px;
+	-moz-flex: 0 0 50px;
+	-webkit-flex: 0 0 50px;
+	width: 50px;
+}
+
+.detail-header .avatar .pic {
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+.detail-header .basic-message {
+	padding-left: 8px;
+	flex:1;
+	-ms-flex:1;
+	-moz-flex:1;
+	-webkit-flex:1;
+	display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -ms-box;
+    display: -o-box;
+    box-orient: vertical;
+    -o-box-orient: vertical;
+    -ms-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-box-orient: vertical;
+    box-pack: justify;
+    -o-box-pack: justify;
+    -ms-box-pack: justify;
+    -moz-box-pack: justify;
+    -webkit-box-pack: justify;
+    overflow: hidden;
+}
+
+.basic-message .person-message {
+	margin-top:3px;
+	height: 14px;
+	line-height: 14px;
+	font-size: 0;
+}
+
+.basic-message .person-message .name {
+	font-size: 12px;
+	color: rgb(77,85,93);
+}
+
+.basic-message .person-message .gender{
+	padding-left: 15px;
+	font-size: 14px;
+}
+.person-message .gender.man {
+	color: rgb(34,108,209);
+}
+
+.person-message .gender.weman {
+	color: rgb(240,20,20);
+}
+
+.basic-message .account-number {
+	margin-bottom: 3px;
+	height:14px;
+	line-height: 14px;
+	font-size: 12px;
+	color: rgb(77,85,93);
+}
+
+.detail .detail-body {
+	padding: 12px;
+	margin-top: 15px;
+	background-color: #fff;
+	position: relative;
+}
+
+.detail .detail-body::before, .detail .detail-body::after {
+	width: 100%;
+	height: 1px;
+	content: '';
+	display: block;
+	border: 1px solid rgba(7,17,27,0.1);
+	position: absolute;
+	left: 0;
+	transform: scaleY(0.5);
+	-o-transform: scaleY(0.5);
+	-ms-transform: scaleY(0.5);
+	-moz-transform: scaleY(0.5);
+	-webkit-transform: scaleY(0.5);
+}
+
+.detail .detail-body::before {
+	top: -1px;
+}
+
+.detail .detail-body::after {
+	bottom: -1px;
+}
+
+.detail .detail-body .introduce {
+	min-height: 30px;
+	padding: 5px 0;
+	position: relative;
+	display: box;
+	display: -moz-box;
+	display: -webkit-box;
+	display: -ms-box;
+	display: -o-box;
+	box-orient: vertical;
+	-o-box-orient: vertical;
+	-ms-box-orient: vertical;
+	-moz-box-orient: vertical;
+	-webkit-box-orient: vertical;
+	box-pack:center;
+	-o-box-pack:center;
+	-ms-box-pack:center;
+	-moz-box-pack:center;
+	-webkit-box-pack:center;
+	font-size: 0;
+}
+
+.detail-body .introduce:last-child::after {
+	border:none;
+}
+
+.introduce .introduce-title, .introduce .introduce-content {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 12px;
+	color: rgb(77,85,93);
+}
+
+.introduce .album-list {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 0;
+}
+
+.introduce .album-list .album-item {
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.introduce .album-list .album-item:first-child {
+	
+}
+
+.album-list .album-item .album {
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+.detail .detail-btn {
+	display: block;
+	width: 90%;
+	height: 12vw;
+	line-height:12vw;
+	border: none;
+	background:none;
+	outline: none;
+	padding: 0;
+	margin: 15px auto 0;
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.detail .send-message {
+	background-color: #59bd36;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	overflow: hidden;
+	color: #fff;
+}
+
+.detail .vedio-chat {
+	background-color: #a5aaa6;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	overflow: hidden;
+	color: rgb(240,20,20);
+}
+

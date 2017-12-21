@@ -1,0 +1,97 @@
+﻿/*
+	created by Xie Zefeng on 2017-12-15
+*/
+
+.chat {
+	width: 100%;
+}
+
+.chat-list {
+	
+}
+
+.chat-list .list-item {
+	padding: 10px 12px;
+	position: relative;
+}
+
+.chat-list .list-item.border-none:after {
+	border: none;
+}
+
+.chat-list .list-item .avatar {
+	flex: 0 0 50px;
+	-webkit-flex: 0 0 50px;
+	-webkit-box-flex: 0 0 50px;
+    -ms-flex: 0 0 50px;
+	width: 50px;
+}
+
+.chat-list .list-item .avatar img {
+	border-radius: 3px;
+	-o-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+.chat-list .list-item .chat-name {
+	position: relative;
+	-webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -ms-box;
+    display: -o-box;
+    box-orient: vertical;
+    -o-box-orient: vertical;
+    -ms-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-box-orient: vertical;
+    box-pack: justify;
+    -o-box-pack: justify;
+    -ms-box-pack: justify;
+    -moz-box-pack: justify;
+    -webkit-box-pack: justify;
+    overflow: hidden;
+}
+
+.chat-list .list-item .chat-name .name, .chat-list .list-item .chat-name .content, .chat-list .list-item .chat-name .time {
+	display: block;
+	color:rgb(7,17,17);
+}
+
+
+.chat-list .list-item .chat-name .name, .chat-list .list-item .chat-name .content {
+	height: 12px;
+	line-height: 12px;
+	padding-left: 8px;
+	overflow:hidden;
+	font-size: 10px;
+}
+
+.chat-list .list-item .chat-name .name {
+	margin-top: 5px;
+}
+
+.chat-list .list-item .chat-name .content {
+	margin-bottom: 5px;
+}
+
+.chat-list .list-item .chat-name .time {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 12px;
+	line-height: 12px;
+	font-size: 10px;
+	color: rgb(77,85,93);
+}
+
+
+
+
+

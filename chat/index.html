@@ -1,0 +1,349 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes" /> <!-- 开启webApp全屏 --><!-- 删除苹果默认的工具栏和菜单栏 -->
+		<meta name="format-detection" content="telphone=no, email=no" /><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+		<!-- 启用360浏览器的极速模式(webkit) -->
+		<meta name="renderer" content="webkit">
+		<!-- 避免IE使用兼容模式 -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+		<meta name="HandheldFriendly" content="true">
+		<!-- 微软的老式浏览器 -->
+		<meta name="MobileOptimized" content="320">
+		<!-- uc强制竖屏 -->
+		<meta name="screen-orientation" content="portrait">
+		<!-- QQ强制竖屏 -->
+		<meta name="x5-orientation" content="portrait">
+		<!-- UC强制全屏 -->
+		<meta name="full-screen" content="yes">
+		<!-- QQ强制全屏 -->
+		<meta name="x5-fullscreen" content="true">
+		<!-- UC应用模式 -->
+		<meta name="browsermode" content="application">
+		<!-- QQ应用模式 -->
+		<meta name="x5-page-mode" content="app">
+		<!-- windows phone 点击无高光 -->
+		<meta name="msapplication-tap-highlight" content="no">
+		<meta name="Keywords" content=""/>
+		<meta name="Description" content=""/>
+		<title>SPA应用程序</title>
+		<link type="text/css" rel="stylesheet" href="libs/css/reset.css" />
+		<link type="text/css" rel="stylesheet" href="libs/css/font-awesome.css" />
+		<link type="text/css" rel="stylesheet" href="css/index.css" />
+		<link type="text/css" rel="stylesheet" href="css/chat.css" />
+		<link type="text/css" rel="stylesheet" href="css/list.css" />
+		<link rel="stylesheet" type="text/css" href="css/cover.css"/>
+		<link rel="stylesheet" type="text/css" href="css/talk.css"/>
+		<link rel="stylesheet" type="text/css" href="css/input.css"/>
+		<link rel="stylesheet" type="text/css" href="css/detail.css"/>
+		<!--<script type="text/javascript" src="libs/js/jquery.js"></script>-->
+		<script type="text/javascript" src="libs/js/checkDevice.js"></script>
+		<script type="text/javascript" src="libs/js/vue.js"></script>
+		<script type="text/javascript" src="libs/js/vue-router.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.4"></script>
+		<script type="text/javascript" src="libs/js/iscroll-probe.js"></script>
+		<script type="text/javascript" src="libs/js/formatDate.js"></script>
+	</head>
+	<body>
+		<div id="web-app">
+			<v-header :msg="msg"></v-header>
+			<router-view :my-data="myData"></router-view>
+			<footer class="footer flex">
+				<router-link to="/chat" class="list-item">
+					<span class="wrapper">
+						<span class="icon"><i class="fa fa-commenting-o"></i></span><br />
+						<span class="text">对话</span>
+					</span>
+				</router-link>
+				<router-link to="/list" class="list-item">
+					<span class="wrapper">
+						<span class="icon"><i class="fa fa-th-list"></i></span><br />
+						<span class="text">通讯录</span>
+					</span>
+				</router-link>
+				<router-link to="/cover" class="list-item">
+					<span class="wrapper">
+						<span class="icon"><i class="fa fa-compass"></i></span><br />
+						<span class="text">学习天地</span>
+					</span>
+				</router-link>
+				<router-link to="/mine" class="list-item">
+					<span class="wrapper">
+						<span class="icon"><i class="fa fa-user-o"></i></span><br />
+						<span class="text">个人</span>
+					</span>
+				</router-link>
+			</footer>
+		</div>
+		
+		<script type="text/x-template" id="header">
+			<div class="app-header flex">
+				<span class="go-back" v-if="back" @click="goBack">
+					<i class="fa fa-arrow-left fa-lg"></i>
+				</span>
+				<h3 class="title">{{msg}}</h3>
+				<div class="header-handle translate-y">
+					<span class="search">
+						<i class="fa fa-search"></i>
+					</span>
+					<span class="add-more" @click="toggleHandleTool">
+						<i class="fa fa-plus"></i>
+					</span>
+				</div>
+				<transition name="handle">
+					<div v-show="showTool" class="handle-tool">
+						<ul class="list">
+							<li v-for="(item, index) in tool" :key="index" class="tool-item border-box">
+								<i class="icon" :class="classMap[index]"></i>
+								<span class="text">{{item}}</span>
+							</li>
+						</ul>
+					</div>
+				</transition>
+			</div>
+		</script>
+		
+		<script type="text/x-template" id="chat-wrapper">
+			<div class="chat-wrapper" ref="chat">
+				<div class="chat">
+					<ul class="chat-list" ref="list">
+						<li class="list-item flex border-bottom-1px" v-for="(item, index) in myData.friends" v-show="item.content.length > 0" :class="{'active-hook':item.content.length > 0}" :key="index" @click="openFriend(item, $event)">
+							<div class="avatar">
+								<img width="50" height="50" :src="item.avatar" />
+							</div>
+							<div class="chat-name">
+								<span class="name text-ellipsis border-box">{{item.name}}</span>
+								<span class="content text-ellipsis border-box" v-if="item.content.length > 0">{{item.content[item.content.length - 1].say}}</span>
+								<span class="time" v-if="item.content.length > 0">{{item.content[item.content.length - 1].time | farmatTime}}</span>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<v-talk :friend="friend" :my-data="myData" v-show="talking" @back="changeBack"></v-talk>
+			</div>
+		</script>
+		
+		<script type="text/x-template" id="list-wrapper">
+			<div class="list-wrapper" ref="lists">
+				<ul class="friend-list">
+					<li v-for="(friend, index) in myData.friends" :key="index" class="friend border-bottom-1px flex" @click="showDetail($event, friend)">
+						<div class="friend-avatar">
+							<img :src="friend.avatar" width="50" height="50" class="avatar" />
+						</div>
+						<div class="friend-name">
+							<span class="name">{{friend.name}}</span>
+						</div>
+					</li>
+				</ul>
+				<v-detail :friend="person" :my-data="myData" v-show="detail" @go-back="goBack"></v-detail>
+			</div>
+		</script>
+		
+		<script type="text/x-template" id="cover-wrapper">
+			<div class="cover-wrapper">
+				<div class="nav-wrapper">
+					<div class="cover" ref="cover">
+						<nav class="nav" ref="nav">
+							<router-link to="/cover/ps_g_one">一年级</router-link>
+							<router-link to="/cover/ps_g_two">二年级</router-link>
+							<router-link to="/cover/ps_g_three">三年级</router-link>
+							<router-link to="/cover/ps_g_four">四年级</router-link>
+							<router-link to="/cover/ps_g_five">五年级</router-link>
+							<router-link to="/cover/ps_g_six">六年级</router-link>
+							<router-link to="/cover/ms_g_one">初一</router-link>
+							<router-link to="/cover/ms_g_two">初二</router-link>
+							<router-link to="/cover/ms_g_three">初三</router-link>
+							<router-link to="/cover/hs_g_one">高一</router-link>
+							<router-link to="/cover/hs_g_two">高二</router-link>
+							<router-link to="/cover/hs_g_three">高三</router-link>
+						</nav>
+					</div>
+				</div>
+				<router-view></router-view>
+			</div>
+		</script>
+		
+		<script type="text/x-template" id="mine-wrapper">
+			<div class="mine-wrapper">mine-wrapper</div>
+		</script>
+		
+		<!-- 聊天页面 -->
+		<script type="text/x-template" id="talk-wrapper">
+			<transition name="talk" v-on:enter="transitioning">
+				<div class="talk-wrapper">
+					<v-header :msg="friend.name" :back="back" @toggle-back="toggleBack"></v-header>
+					<div class="talk-content" ref="talk">
+						<ul class="content clearfix" ref="content">
+							<li class="item border-box clearfix item-hook" v-for="(item, index) in friend.content"  :class="item.type === 0 ? 'item-other' : 'item-mine'">
+								<div class="talk-avatar">
+									<img class="avatar-item" :src="item.type === 0 ? friend.avatar : myData.avatar" width="50" height="50"/>
+								</div>	
+								<span class="say-time">{{item.time | farmatTime}}</span>
+								<div class="say-content border-box">
+									<span class="say">{{item.say}}</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<v-input @send="receiveMessage" @refresh-iscroll="refreshIscroll"></v-input>
+				</div>
+			</transition>
+		</script>
+		<!-- END -->
+		<!-- 内容输入框 -->
+		<script type="text/template" id="input-wrapper">
+			<div class="input-wrapper flex">
+				<div class="input-mode display-box">
+					<span class="circle translate"></span>
+					<i class="icon fa fa-keyboard-o"></i>
+				</div>
+				<div class="input-content display-box">
+					<textarea class="content" v-model="content" @focus="textareaFocus"></textarea>
+				</div>
+				<div v-if="false" class="expression-change display-box"></div>
+				<div class="send-content display-box">
+					<span class="send" @click="sendContent">发送</span>
+				</div>
+			</div>
+		</script>
+		<!-- END -->
+		<!-- 个人信息详细页 -->
+		<script type="text/template" id="detail-wrapper">
+			<transition name="detail">
+				<div class="detail-wrapper" ref="detail">
+					<v-header :msg="msg" :back="back" @toggle-back="toBack"></v-header>
+					<div class="detail-message">
+						<div class="detail">
+							<div class="detail-header flex">
+								<div class="avatar">
+									<img :src="friend.avatar" width="50" height="50" class="pic" />
+								</div>
+								<div class="basic-message">
+									<div class="person-message">
+										<span class="name">{{friend.name}}</span>
+										<span class="gender" :class="friend.sex == '男' ? 'man' : 'weman'">
+											<i class="fa fa-user"></i>
+										</span>
+									</div>
+									<div class="account-number" v-if="friend.accountNumber">个人账号：{{friend.accountNumber}}</div>
+								</div>
+							</div>
+							<ul class="detail-body">
+								<li class="introduce border-bottom-1px">
+									<span class="introduce-title">地区：</span>
+									<span class="introduce-content">{{friend.area}}</span>
+								</li>
+								<li class="introduce border-bottom-1px">
+									<span class="introduce-title">电话：</span>
+									<span class="introduce-content">{{friend.phone}}</span>
+								</li>
+								<li class="introduce border-bottom-1px">
+									<span class="introduce-title">个人相册：</span>
+									<ul class="album-list">
+										<li v-for="(item, index) in friend.album" :key="index" class="album-item">
+											<img :src="item" width="50" height="50" class="album" />
+										</li>
+									</ul>
+								</li>
+								<li class="introduce border-bottom-1px">
+									<span class="introduce-title">个性签名：</span>
+									<span class="introduce-content">{{friend.autograph}}</span>
+								</li>
+							</ul>
+							<button class="detail-btn send-message" @click="showTalking">发送信息</button>
+							<button class="detail-btn vedio-chat" disabled="disabled">视频聊天</button>
+						</div>
+					</div>
+					<v-talk :friend="friend" :my-data="myData" :from-detail="fromDetail" v-show="talking" @back="goBack"></v-talk>
+				</div>
+			</transition>
+		</script>
+		<!-- END -->
+		<!-- 小学一年级 -->
+		<template id="ps-grade-one">
+			<div class="ps-grade-one studio-wrapper flex">
+				<div class="studio-left">
+					<ul class="subject-list">
+						<li v-for="(item, index) in grade_one.subject" class="subject-item display-box border-bottom-1px" :key="index">
+							<span class="item">{{item.name}}</span>
+						</li>
+					</ul>
+				</div>
+				<div class="studio-right">
+					<ul class="content-list">
+						<li v-for="(item, index) in grade_one.subject" class="single" :key="index">
+							<h2 class="title">{{item.name}}</h2>
+							<ul class="single-list">
+								<li v-for="(item, index) in item.content" class="item border-bottom-1px" :key="index">
+									<h3 class="sub-title">{{item.titleName}}</h3>
+									<p class="publish-time">{{item.publishTime | farmatTime}}</p>
+									<p class="sub-introduce">{{item.introduce}}</p>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</template>
+		<!-- END -->
+		<!-- 小学二年级 -->
+		<template id="ps-grade-two">
+			<div class="ps-grade-two studio-wrapper flex">小学二年级</div>
+		</template>
+		<!-- END -->
+		<!-- 小学三年级 -->
+		<template id="ps-grade-three">
+			<div class="ps-grade-three studio-wrapper flex">小学三年级</div>
+		</template>
+		<!-- END -->
+		<!-- 小学四年级 -->
+		<template id="ps-grade-four">
+			<div class="ps-grade-four studio-wrapper flex">小学四年级</div>
+		</template>
+		<!-- END -->
+		<!-- 小学五年级 -->
+		<template id="ps-grade-five">
+			<div class="ps-grade-five studio-wrapper flex">小学五年级</div>
+		</template>
+		<!-- END -->
+		<!-- 小学六年级 -->
+		<template id="ps-grade-six">
+			<div class="ps-grade-six studio-wrapper flex">小学六年级</div>
+		</template>
+		<!-- END -->
+		<!-- 初中一年级 -->
+		<template id="ms-grade-one">
+			<div class="ms-grade-one studio-wrapper flex">初一</div>
+		</template>
+		<!-- END -->
+		<!-- 初中二年级 -->
+		<template id="ms-grade-two">
+			<div class="ms-grade-two studio-wrapper flex">初二</div>
+		</template>
+		<!-- END -->
+		<!-- 初中三年级 -->
+		<template id="ms-grade-three">
+			<div class="ms-grade-three studio-wrapper flex">初三</div>
+		</template>
+		<!-- END -->
+		<!-- 高中一年级 -->
+		<template id="hs-grade-one">
+			<div class="hs-grade-one studio-wrapper flex">高一</div>
+		</template>
+		<!-- END -->
+		<!-- 高中二年级 -->
+		<template id="hs-grade-two">
+			<div class="hs-grade-two studio-wrapper flex">高二</div>
+		</template>
+		<!-- END -->
+		<!-- 高中三年级 -->
+		<template id="hs-grade-three">
+			<div class="hs-grade-three studio-wrapper flex">高三</div>
+		</template>
+		<!-- END -->
+	</body>
+	<script type="text/javascript" src="js/index.js"></script>
+</html>

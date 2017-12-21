@@ -1,0 +1,182 @@
+/*
+ 	created by Xie Zefeng on 2017/12/17
+ * */
+
+.talk-wrapper {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background: rgb(220,220,220);
+	z-index: 5;
+	transform: translate(0,0);
+	-o-transform: translate(0,0);
+	-ms-transform: translate(0,0);
+	-moz-transform: translate(0,0);
+	-webkit-transform: translate(0,0);
+}
+
+.talk-enter, .talk-leave-active {
+	transform: translateX(100%);
+	-o-transform: translateX(100%);
+	-ms-transform: translateX(100%);
+	-moz-transform: translateX(100%);
+	-webkit-transform: translateX(100%);
+}
+
+.talk-enter-active, .talk-leave-active {
+	transition: all .3s ease-in;
+	-o-transition: all .3s ease-in;
+	-ms-transition: all .3s ease-in;
+	-moz-transition: all .3s ease-in;
+	-webkit-transition: all .3s ease-in;
+}
+
+.talk-content {
+	position: absolute;
+	top: 50px;
+	bottom: 50px;
+	left: 0;
+	width: 100%;
+	background: #fff;
+	overflow: hidden;
+}
+
+.talk-content .content {
+	width: 100%;
+}
+
+.talk-content .content .item {
+	width: 100%;
+	padding: 25px 10px;
+	overflow: hidden;
+	position: relative;
+}
+
+.talk-content .content .item .say-time {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	font-size: 10px;
+	color: rgb(77,85,93);
+}
+
+.item .talk-avatar .avatar-item {
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+.talk-content .content .item-other {
+	float: left;
+}
+
+.talk-content .content .item-other .talk-avatar {
+	float: left;
+	width: 50px;
+	height: 50px;
+}
+
+.talk-content .content .item-other .say-content {
+	float: left;
+	width: calc(100% - 50px - 10px - 20%);
+	width: -moz-calc(100% - 50px - 10px - 20%);
+	width: -webkit-calc(100% - 50px - 10px - 20%);
+	padding-left: 10px;
+	position: relative;
+}
+
+.talk-content .content .item-other .say-content:after{
+	content: '';
+	display: block;
+	width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-right: 10px solid lightgreen;
+    border-bottom: 5px solid transparent;
+    position: absolute;
+    left: 0;
+    top: 5px;
+}
+
+.content .item-other .say-content .say {
+	display: inline-block;
+	padding: 5px 3px;
+	border: 1px solid rgb(7,17,27);
+	line-height: 16px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	background-color: lightgreen;
+	font-size: 12px;
+	color: rgb(7,17,27);
+}
+
+.talk-content .content .item-mine {
+	float: right;
+}
+
+.talk-content .content .item-mine .talk-avatar {
+	float: right;
+	width: 50px;
+	height: 50px;
+}
+
+.talk-content .content .item-mine .say-content {
+	float: right;
+	width: calc(100% - 50px - 10px - 20%);
+	width: -moz-calc(100% - 50px - 10px - 20%);
+	width: -webkit-calc(100% - 50px - 10px - 20%);
+	padding-right: 10px;
+	position: relative;
+}
+
+.talk-content .content .item-mine .say-content:after {
+	content: '';
+	display: block;
+	width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-left: 10px solid lightgreen;
+    border-bottom: 5px solid transparent;
+    position: absolute;
+    right: 0;
+    top: 5px;
+}
+
+.content .item-mine .say-content .say {
+	display: inline-block;
+	float: right;
+	padding: 5px 3px;
+	border: 1px solid rgb(7,17,27);
+	line-height: 16px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	background-color: #fff;
+	font-size: 12px;
+	color: rgb(7,17,27);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

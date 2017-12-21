@@ -1,0 +1,153 @@
+﻿/*
+	created by Xie Zefeng on 2017-12-21
+*/
+.nav-wrapper {
+	height: 40px;
+	line-height: 40px;
+	padding: 2px 12px;
+	border-bottom: 1px solid #ddd;
+}
+
+.nav-wrapper .cover {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.cover .nav {
+	width: 100%;
+	height: 100%;
+	white-space: nowrap;
+	font-size: 0;
+}
+
+.cover .nav a {
+	display: inline-block;
+	height: 100%;
+	width: 60px;
+	text-align: center;
+	margin-right: 5px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	overflow: hidden;
+	color: rgb(77,85,93);
+	font-size: 12px;
+}
+
+.cover .nav a:last-child {
+	margin-right: 0;
+}
+
+.cover .nav a.router-link-active {
+	background-color: rgb(240, 20, 20);
+	color: #fff;
+}
+
+.studio-wrapper {
+	position: absolute;
+	top: 44px;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+}
+
+.studio-wrapper .studio-left {
+	flex: 0 0 80px;
+	-webkit-flex: 0 0 80px;
+	-webkit-box-flex: 0 0 80px;
+    -ms-flex: 0 0 80px;
+	width: 80px;
+	height: 100%;
+	position: relative;
+}
+
+.studio-wrapper .studio-left::before {
+	content: '';
+	display: block;
+	height: 100%;
+	width: 1px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	border-right: 1px solid rgba(7,17,27,0.1);
+	transform: scaleX(0.5);
+	-o-transform: scaleX(0.5);
+	-ms-transform: scaleX(0.5);
+	-moz-transform: scaleX(0.5);
+	-webkit-transform: scaleX(0.5);
+}
+
+.studio-left .subject-list {
+	
+}
+
+.studio-left .subject-list .subject-item {
+	height: 60px;
+	position:relative;
+	background-color: #f3f5f7;
+	color: rgb(7,17,27);
+	font-size: 14px;
+}
+
+.subject-list .subject-item:last-child::after {
+	border: none;
+}
+
+.studio-wrapper .studio-right {
+	flex: 1;
+	-webkit-flex: 1;
+	-webkit-box-flex: 1;
+    -ms-flex: 1;
+}
+
+.studio-right .content-list {
+	/*padding: 0 12px;*/
+}
+
+.content-list .single {
+	
+}
+
+.content-list .single .title {
+	height: 24px;
+	line-height: 24px;
+	padding-left: 12px;
+	background-color: #E6E6FA;
+	color: rgb(7,17,27);
+	font-size: 14px;
+}
+
+.content-list .single .single-list {
+	padding: 0 12px;
+}
+
+.single .single-list .item {
+	padding: 10px 0;
+	position: relative;
+}
+
+.single-list .item:last-child::after {
+	border: none;
+}
+
+.single-list .item .sub-title {
+	margin-bottom: 10px;
+	font-size: 12px;
+	color: rgb(7,17,27);
+}
+
+.single-list .item .sub-introduce {
+	line-height: 16px;
+	font-size: 10px;
+	color: rgb(77,85,93);
+}
+
+.single-list .item .publish-time {
+	position: absolute;
+	top: 10px;
+	right: 0;
+	color: rgb(77,85,93);
+	font-size: 10px;
+}
+
