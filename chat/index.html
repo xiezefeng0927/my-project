@@ -29,7 +29,7 @@
 		<meta name="msapplication-tap-highlight" content="no">
 		<meta name="Keywords" content=""/>
 		<meta name="Description" content=""/>
-		<title>SPA应用程序</title>
+		<title>哈哈</title>
 		<link type="text/css" rel="stylesheet" href="libs/css/reset.css" />
 		<link type="text/css" rel="stylesheet" href="libs/css/font-awesome.css" />
 		<link type="text/css" rel="stylesheet" href="css/index.css" />
@@ -49,7 +49,7 @@
 	</head>
 	<body>
 		<div id="web-app">
-			<v-header :msg="msg"></v-header>
+			<!--<v-header :msg="msg"></v-header>-->
 			<router-view :my-data="myData"></router-view>
 			<footer class="footer flex">
 				<router-link to="/chat" class="list-item">
@@ -86,11 +86,20 @@
 				</span>
 				<h3 class="title">{{msg}}</h3>
 				<div class="header-handle translate-y">
-					<span class="search">
+					<span class="search" v-if="search">
 						<i class="fa fa-search"></i>
 					</span>
-					<span class="add-more" @click="toggleHandleTool">
+					<span class="add-more" v-if="plus" @click="toggleHandleTool">
 						<i class="fa fa-plus"></i>
+					</span>
+					<span class="ellipsis" v-if="ellipsis">
+						<i class="fa fa-ellipsis-v"></i>
+					</span>
+					<span class="user" v-if="user">
+						<i class="fa fa-user"></i>
+					</span>
+					<span class="camera" v-if="camera">
+						<i class="fa fa-camera"></i>
 					</span>
 				</div>
 				<transition name="handle">
@@ -107,74 +116,86 @@
 		</script>
 		
 		<script type="text/x-template" id="chat-wrapper">
-			<div class="chat-wrapper" ref="chat">
-				<div class="chat">
-					<ul class="chat-list" ref="list">
-						<li class="list-item flex border-bottom-1px" v-for="(item, index) in myData.friends" v-show="item.content.length > 0" :class="{'active-hook':item.content.length > 0}" :key="index" @click="openFriend(item, $event)">
-							<div class="avatar">
-								<img width="50" height="50" :src="item.avatar" />
-							</div>
-							<div class="chat-name">
-								<span class="name text-ellipsis border-box">{{item.name}}</span>
-								<span class="content text-ellipsis border-box" v-if="item.content.length > 0">{{item.content[item.content.length - 1].say}}</span>
-								<span class="time" v-if="item.content.length > 0">{{item.content[item.content.length - 1].time | farmatTime}}</span>
-							</div>
-						</li>
-					</ul>
+			<div class="pages-wrapper">
+				<v-header :msg="msg" :search="search" :plus="plus"></v-header>
+				<div class="chat-wrapper" ref="chat">
+					<div class="chat">
+						<ul class="chat-list" ref="list">
+							<li class="list-item flex border-bottom-1px" v-for="(item, index) in myData.friends" v-show="item.content.length > 0" :class="{'active-hook':item.content.length > 0}" :key="index" @click="openFriend(item, $event)">
+								<div class="avatar">
+									<img width="50" height="50" :src="item.avatar" />
+								</div>
+								<div class="chat-name">
+									<span class="name text-ellipsis border-box">{{item.name}}</span>
+									<span class="content text-ellipsis border-box" v-if="item.content.length > 0">{{item.content[item.content.length - 1].say}}</span>
+									<span class="time" v-if="item.content.length > 0">{{item.content[item.content.length - 1].time | farmatTime}}</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<v-talk :friend="friend" :my-data="myData" v-show="talking" @back="changeBack"></v-talk>
 				</div>
-				<v-talk :friend="friend" :my-data="myData" v-show="talking" @back="changeBack"></v-talk>
 			</div>
 		</script>
 		
 		<script type="text/x-template" id="list-wrapper">
-			<div class="list-wrapper" ref="lists">
-				<ul class="friend-list">
-					<li v-for="(friend, index) in myData.friends" :key="index" class="friend border-bottom-1px flex" @click="showDetail($event, friend)">
-						<div class="friend-avatar">
-							<img :src="friend.avatar" width="50" height="50" class="avatar" />
-						</div>
-						<div class="friend-name">
-							<span class="name">{{friend.name}}</span>
-						</div>
-					</li>
-				</ul>
-				<v-detail :friend="person" :my-data="myData" v-show="detail" @go-back="goBack"></v-detail>
+			<div class="pages-wrapper">
+				<v-header :msg="msg" :search="search" :plus="plus"></v-header>
+				<div class="list-wrapper" ref="lists">
+					<ul class="friend-list">
+						<li v-for="(friend, index) in myData.friends" :key="index" class="friend border-bottom-1px flex" @click="showDetail($event, friend)">
+							<div class="friend-avatar">
+								<img :src="friend.avatar" width="50" height="50" class="avatar" />
+							</div>
+							<div class="friend-name">
+								<span class="name">{{friend.name}}</span>
+							</div>
+						</li>
+					</ul>
+					<v-detail :friend="person" :my-data="myData" v-show="detail" @go-back="goBack"></v-detail>
+				</div>
 			</div>
 		</script>
 		
 		<script type="text/x-template" id="cover-wrapper">
-			<div class="cover-wrapper">
-				<div class="nav-wrapper">
-					<div class="cover" ref="cover">
-						<nav class="nav" ref="nav">
-							<router-link to="/cover/ps_g_one">一年级</router-link>
-							<router-link to="/cover/ps_g_two">二年级</router-link>
-							<router-link to="/cover/ps_g_three">三年级</router-link>
-							<router-link to="/cover/ps_g_four">四年级</router-link>
-							<router-link to="/cover/ps_g_five">五年级</router-link>
-							<router-link to="/cover/ps_g_six">六年级</router-link>
-							<router-link to="/cover/ms_g_one">初一</router-link>
-							<router-link to="/cover/ms_g_two">初二</router-link>
-							<router-link to="/cover/ms_g_three">初三</router-link>
-							<router-link to="/cover/hs_g_one">高一</router-link>
-							<router-link to="/cover/hs_g_two">高二</router-link>
-							<router-link to="/cover/hs_g_three">高三</router-link>
-						</nav>
+			<div class="pages-wrapper">
+				<v-header :msg="msg" :search="search" :plus="plus"></v-header>
+				<div class="cover-wrapper">
+					<div class="nav-wrapper">
+						<div class="cover" ref="cover">
+							<nav class="nav" ref="nav">
+								<router-link to="/cover/ps_g_one">一年级</router-link>
+								<router-link to="/cover/ps_g_two">二年级</router-link>
+								<router-link to="/cover/ps_g_three">三年级</router-link>
+								<router-link to="/cover/ps_g_four">四年级</router-link>
+								<router-link to="/cover/ps_g_five">五年级</router-link>
+								<router-link to="/cover/ps_g_six">六年级</router-link>
+								<router-link to="/cover/ms_g_one">初一</router-link>
+								<router-link to="/cover/ms_g_two">初二</router-link>
+								<router-link to="/cover/ms_g_three">初三</router-link>
+								<router-link to="/cover/hs_g_one">高一</router-link>
+								<router-link to="/cover/hs_g_two">高二</router-link>
+								<router-link to="/cover/hs_g_three">高三</router-link>
+							</nav>
+						</div>
 					</div>
+					<router-view></router-view>
 				</div>
-				<router-view></router-view>
 			</div>
 		</script>
 		
 		<script type="text/x-template" id="mine-wrapper">
-			<div class="mine-wrapper">mine-wrapper</div>
+			<div class="pages-wrapper">
+				<v-header :msg="msg" :camera="camera"></v-header>
+				<div class="mine-wrapper">mine-wrapper</div>
+			</div>
 		</script>
 		
 		<!-- 聊天页面 -->
 		<script type="text/x-template" id="talk-wrapper">
 			<transition name="talk" v-on:enter="transitioning">
 				<div class="talk-wrapper">
-					<v-header :msg="friend.name" :back="back" @toggle-back="toggleBack"></v-header>
+					<v-header :msg="friend.name" :back="back" :user="user" @toggle-back="toggleBack"></v-header>
 					<div class="talk-content" ref="talk">
 						<ul class="content clearfix" ref="content">
 							<li class="item border-box clearfix item-hook" v-for="(item, index) in friend.content"  :class="item.type === 0 ? 'item-other' : 'item-mine'">
@@ -214,7 +235,7 @@
 		<script type="text/template" id="detail-wrapper">
 			<transition name="detail">
 				<div class="detail-wrapper" ref="detail">
-					<v-header :msg="msg" :back="back" @toggle-back="toBack"></v-header>
+					<v-header :msg="msg" :back="back" :ellipsis="ellipsis" @toggle-back="toBack"></v-header>
 					<div class="detail-message">
 						<div class="detail">
 							<div class="detail-header flex">
@@ -265,83 +286,126 @@
 		<!-- 小学一年级 -->
 		<template id="ps-grade-one">
 			<div class="ps-grade-one studio-wrapper flex">
-				<div class="studio-left">
-					<ul class="subject-list">
-						<li v-for="(item, index) in grade_one.subject" class="subject-item display-box border-bottom-1px" :key="index">
-							<span class="item">{{item.name}}</span>
-						</li>
-					</ul>
-				</div>
-				<div class="studio-right">
-					<ul class="content-list">
-						<li v-for="(item, index) in grade_one.subject" class="single" :key="index">
-							<h2 class="title">{{item.name}}</h2>
-							<ul class="single-list">
-								<li v-for="(item, index) in item.content" class="item border-bottom-1px" :key="index">
-									<h3 class="sub-title">{{item.titleName}}</h3>
-									<p class="publish-time">{{item.publishTime | farmatTime}}</p>
-									<p class="sub-introduce">{{item.introduce}}</p>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
+				<v-subject-nav :content="grade_one" ref="nav" @transmit-index="activeIndex"></v-subject-nav>
+				<v-subject-content :sub-content="grade_one" ref="content" @transmit-current="transmitCurrent"></v-subject-content>
 			</div>
 		</template>
 		<!-- END -->
 		<!-- 小学二年级 -->
 		<template id="ps-grade-two">
-			<div class="ps-grade-two studio-wrapper flex">小学二年级</div>
+			<div class="ps-grade-two studio-wrapper flex">
+				<v-subject-nav :content="grade_two" ref="nav" @transmit-index="activeIndex"></v-subject-nav>
+				<v-subject-content :sub-content="grade_two" ref="content" @transmit-current="transmitCurrent"></v-subject-content>
+			</div>
 		</template>
 		<!-- END -->
 		<!-- 小学三年级 -->
 		<template id="ps-grade-three">
-			<div class="ps-grade-three studio-wrapper flex">小学三年级</div>
+			<div class="ps-grade-three studio-wrapper flex">
+				<v-subject-nav :content="grade_three" ref="nav" @transmit-index="activeIndex"></v-subject-nav>
+				<v-subject-content :sub-content="grade_three" ref="content" @transmit-current="transmitCurrent"></v-subject-content>
+			</div>
 		</template>
 		<!-- END -->
 		<!-- 小学四年级 -->
 		<template id="ps-grade-four">
-			<div class="ps-grade-four studio-wrapper flex">小学四年级</div>
+			<div class="ps-grade-four studio-wrapper flex">
+				<v-subject-nav :content="grade_four" ref="nav" @transmit-index="activeIndex"></v-subject-nav>
+				<v-subject-content :sub-content="grade_four" ref="content" @transmit-current="transmitCurrent"></v-subject-content>
+			</div>
 		</template>
 		<!-- END -->
 		<!-- 小学五年级 -->
 		<template id="ps-grade-five">
-			<div class="ps-grade-five studio-wrapper flex">小学五年级</div>
+			<div class="ps-grade-five studio-wrapper flex">
+				<v-subject-nav :content="grade_five" ref="nav" @transmit-index="activeIndex"></v-subject-nav>
+				<v-subject-content :sub-content="grade_five" ref="content" @transmit-current="transmitCurrent"></v-subject-content>
+			</div>
 		</template>
 		<!-- END -->
 		<!-- 小学六年级 -->
 		<template id="ps-grade-six">
-			<div class="ps-grade-six studio-wrapper flex">小学六年级</div>
+			<div class="ps-grade-six studio-wrapper flex">
+				<v-subject-nav :content="grade_six" ref="nav" @transmit-index="activeIndex"></v-subject-nav>
+				<v-subject-content :sub-content="grade_six" ref="content" @transmit-current="transmitCurrent"></v-subject-content>
+			</div>
 		</template>
 		<!-- END -->
 		<!-- 初中一年级 -->
 		<template id="ms-grade-one">
-			<div class="ms-grade-one studio-wrapper flex">初一</div>
+			<div class="ms-grade-one studio-wrapper flex">
+				<v-subject-nav :content="m_grade_one" ref="nav" @transmit-index="activeIndex"></v-subject-nav>
+				<v-subject-content :sub-content="m_grade_one" ref="content" @transmit-current="transmitCurrent"></v-subject-content>
+			</div>
 		</template>
 		<!-- END -->
 		<!-- 初中二年级 -->
 		<template id="ms-grade-two">
-			<div class="ms-grade-two studio-wrapper flex">初二</div>
+			<div class="ms-grade-two studio-wrapper flex">
+				<v-subject-nav :content="m_grade_two" ref="nav" @transmit-index="activeIndex"></v-subject-nav>
+				<v-subject-content :sub-content="m_grade_two" ref="content" @transmit-current="transmitCurrent"></v-subject-content>
+			</div>
 		</template>
 		<!-- END -->
 		<!-- 初中三年级 -->
 		<template id="ms-grade-three">
-			<div class="ms-grade-three studio-wrapper flex">初三</div>
+			<div class="ms-grade-three studio-wrapper flex">
+				<v-subject-nav :content="m_grade_three" ref="nav" @transmit-index="activeIndex"></v-subject-nav>
+				<v-subject-content :sub-content="m_grade_three" ref="content" @transmit-current="transmitCurrent"></v-subject-content>
+			</div>
 		</template>
 		<!-- END -->
 		<!-- 高中一年级 -->
 		<template id="hs-grade-one">
-			<div class="hs-grade-one studio-wrapper flex">高一</div>
+			<div class="hs-grade-one studio-wrapper flex">
+				<v-subject-nav :content="h_grade_one" ref="nav" @transmit-index="activeIndex"></v-subject-nav>
+				<v-subject-content :sub-content="h_grade_one" ref="content" @transmit-current="transmitCurrent"></v-subject-content>
+			</div>
 		</template>
 		<!-- END -->
 		<!-- 高中二年级 -->
 		<template id="hs-grade-two">
-			<div class="hs-grade-two studio-wrapper flex">高二</div>
+			<div class="hs-grade-two studio-wrapper flex">
+				<v-subject-nav :content="h_grade_two" ref="nav" @transmit-index="activeIndex"></v-subject-nav>
+				<v-subject-content :sub-content="h_grade_two" ref="content" @transmit-current="transmitCurrent"></v-subject-content>
+			</div>
 		</template>
 		<!-- END -->
 		<!-- 高中三年级 -->
 		<template id="hs-grade-three">
-			<div class="hs-grade-three studio-wrapper flex">高三</div>
+			<div class="hs-grade-three studio-wrapper flex">
+				<v-subject-nav :content="h_grade_three" ref="nav" @transmit-index="activeIndex"></v-subject-nav>
+				<v-subject-content :sub-content="h_grade_three" ref="content" @transmit-current="transmitCurrent"></v-subject-content>
+			</div>
+		</template>
+		<!-- END -->
+		<!-- 科目的导航栏 -->
+		<template id="subject-nav">
+			<div class="studio-left" ref="nav">
+				<ul class="subject-list">
+					<li v-for="(item, index) in content.subject" class="subject-item display-box border-bottom-1px" :class="{'active': activeIndex === index}" :key="index" @click="navClick($event, index)">
+						<span class="item">{{item.name}}</span>
+					</li>
+				</ul>
+			</div>
+		</template>
+		<!-- END -->
+		<!-- 科目的内容 -->
+		<template id="subject-content">
+			<div class="studio-right" ref="content">
+				<ul class="content-list" ref="list">
+					<li v-for="(item, index) in subContent.subject" class="single single-hook" :key="index">
+						<h2 class="title">{{item.name}}</h2>
+						<ul class="single-list">
+							<li v-for="(item, index) in item.content" class="item border-bottom-1px" :key="index">
+								<h3 class="sub-title">{{item.titleName}}</h3>
+								<p class="publish-time">{{item.publishTime | farmatTime}}</p>
+								<p class="sub-introduce">{{item.introduce}}</p>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
 		</template>
 		<!-- END -->
 	</body>

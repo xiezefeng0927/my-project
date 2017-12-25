@@ -50,6 +50,7 @@
 	left: 0;
 	bottom: 0;
 	width: 100%;
+	overflow: hidden;
 }
 
 .studio-wrapper .studio-left {
@@ -92,6 +93,11 @@
 
 .subject-list .subject-item:last-child::after {
 	border: none;
+}
+
+.subject-list .subject-item.active {
+	background-color: #B2DFEE;
+	color: rgb(240,20,20);
 }
 
 .studio-wrapper .studio-right {

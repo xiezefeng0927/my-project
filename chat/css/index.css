@@ -53,15 +53,16 @@ html, body {
 	font-size: 0;
 }
 
-.header-handle .search, .header-handle .add-more {
+.header-handle .search, .header-handle .add-more, .header-handle .ellipsis, .header-handle .user, .header-handle .camera {
 	display: inline-block;
 	vertical-align: middle;
+	padding-left: 16px;
 	color: #fff;
 	font-size: 18px;
 }
 
 .header-handle .search {
-	margin-right: 20px;
+	/*margin-right: 20px;*/
 }
 
 .app-header .handle-tool {
@@ -200,11 +201,19 @@ html, body {
 	color: rgb(240,20,20);
 }
 
+.pages-wrapper {
+	position:absolute;
+	top:0;
+	bottom: 50px;
+	left:0;
+	width: 100%;
+}
+
 .chat-wrapper, .list-wrapper, .cover-wrapper, .mine-wrapper {
 	position: absolute;
 	left: 0;
 	top: 50px;
-	bottom: 50px;
+	bottom: 0;
 	width: 100%;
 	overflow: hidden;
 	/*background-color: #098765;*/
