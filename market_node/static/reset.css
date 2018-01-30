@@ -1,0 +1,266 @@
+/* 
+2016-02-11
+Author: Xie Ze Feng
+*/
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+body {
+    line-height: 1;
+}
+
+:focus {
+    outline: 1;
+}
+
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary {
+    display: block;
+}
+
+ul,
+ul li {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+a {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    text-decoration: none;
+}
+
+ins {
+    background-color: #ff9;
+    color: #000;
+    text-decoration: none;
+}
+
+mark {
+    background-color: #ff9;
+    color: #000;
+    font-style: italic;
+    font-weight: bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title],
+dfn[title] {
+    border-bottom: 1px dotted #000;
+    cursor: help;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #cccccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+input,
+select {
+    vertical-align: middle;
+}
+
+@media (min-width:320px) and (max-width:360px) {
+    .font-size-12 {
+        font-size: 12px!important;
+    }
+    .font-size-14 {
+        font-size: 14px!important;
+    }
+    .font-size-16 {
+        font-size: 16px!important;
+    }
+    .font-size-18 {
+        font-size: 18px!important;
+    }
+    .font-size-20 {
+        font-size: 20px!important;
+    }
+}
+
+@media (min-width:361px) and (max-width:400px) {
+    .font-size-12 {
+        font-size: 14px!important;
+    }
+    .font-size-14 {
+        font-size: 16px!important;
+    }
+    .font-size-16 {
+        font-size: 18px!important;
+    }
+    .font-size-18 {
+        font-size: 20px!important;
+    }
+    .font-size-20 {
+        font-size: 22px!important;
+    }
+}
+
+@media (min-width:401px) and (max-width:440px) {
+    .font-size-12 {
+        font-size: 16px!important;
+    }
+    .font-size-14 {
+        font-size: 18px!important;
+    }
+    .font-size-16 {
+        font-size: 20px!important;
+    }
+    .font-size-18 {
+        font-size: 22px!important;
+    }
+    .font-size-20 {
+        font-size: 24px!important;
+    }
+}
+
+@media (min-width:441px) and (max-width:480px) {
+    .font-size-12 {
+        font-size: 18px!important;
+    }
+    .font-size-14 {
+        font-size: 20px!important;
+    }
+    .font-size-16 {
+        font-size: 22px!important;
+    }
+    .font-size-18 {
+        font-size: 24px!important;
+    }
+    .font-size-20 {
+        font-size: 26px!important;
+    }
+}
+
+@media (min-width:481px) {
+    .font-size-12 {
+        font-size: 20px!important;
+    }
+    .font-size-14 {
+        font-size: 22px!important;
+    }
+    .font-size-16 {
+        font-size: 24px!important;
+    }
+    .font-size-18 {
+        font-size: 24px!important;
+    }
+    .font-size-20 {
+        font-size: 26px!important;
+    }
+}
