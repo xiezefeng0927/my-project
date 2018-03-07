@@ -64,7 +64,7 @@ exports.findData = function(collectionName, json, callback, page) {
         callback("find函数至少接收3个参数", null);
         return false;
     }
-    var json = json || {};
+    var _json = json || {};
     var skipNumber = 0;
     var limitNumber = 0;
     var sort = {};
@@ -83,8 +83,7 @@ exports.findData = function(collectionName, json, callback, page) {
             callback("数据查找失败", null);
             return false;
         }
-        var cursor = db.collection(collectionName).find(json).limit(limitNumber).skip(skipNumber).sort(sort);
-
+        var cursor = db.collection(collectionName).find(_json).limit(limitNumber).skip(skipNumber).sort(sort);
         cursor.each(function(err, doc) {
             if (err) {
                 callback(err, null);

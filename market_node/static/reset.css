@@ -1,4 +1,4 @@
-/* 
+/*
 2016-02-11
 Author: Xie Ze Feng
 */
@@ -263,4 +263,16 @@ select {
     .font-size-20 {
         font-size: 26px!important;
     }
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+.clearfix:after {
+  content: '';
+  clear: both;
+  display: block;
+  visibility: hidden;
+  height: 0;
 }

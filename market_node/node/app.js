@@ -43,7 +43,9 @@ app.get('/', function(req, res) {
 });
 
 //设置路由表,相关的页面由 controller/router.js 完成
-app.get('/getAppIntroduce', router.doGetAppIntroduce);
+app.get('/getAppIntroduce', router.doGetAppIntroduce);  // 商品首页的信息
+
+app.get('/getClassifyProducts', router.doGetClassifyProducts);  // 获取指定分类ID的商品
 
 app.get("/user/:person", router.showMine); //渲染我的说说页面
 

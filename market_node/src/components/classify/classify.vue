@@ -27,7 +27,8 @@
     },
     methods: {
       showClassifyProduction: function(event, obj) {
-        console.log(obj);
+        // 向父组件派发事件并将传递参数
+        this.$emit("showProduction", obj);
       }
     }
   }
