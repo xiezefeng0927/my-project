@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="page">
+			<ul v-if="Array.isArray(list) && list.length > 0">
+				<li v-for="(item, index) in list">
+					<span :text="index"></span>
+					{{index}} - 
+					{{item.a}} - 
+					{{item.b}} - 
+					{{item.c}} - 
+					{{item.d}} - 
+					{{item.e}} - 
+					{{item.f}} - 
+					{{item.g}}
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jsonp.js" ></script>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script type="text/javascript">
+		var obj = {
+			name: '',
+			goal_1: '',
+			goal_2: ''
+		};
+		var vm = new Vue({
+			el: '#page',
+			data: function() {
+				return {
+					reqUrl: "http://119.28.186.74:80/app/scorePage/jsonpList.js",
+					list: [],
+					flag: false
+				}
+			},
+			beforeCreate: function () {
+				jsonpRequest ("http://119.28.186.74:80/app/scorePage/jsonpList.js");
+			},
+			mounted: function () {
+				var self = this;
+				setInterval(function() {
+					jsonpRequest(self.reqUrl);
+				}, 3000);
+			},
+			methods: {
+				init: function (requestUrl) {
+					var oS = document.createElement("script");
+					var baseUrl = requestUrl + "?callback=" + this.success;
+					oS.src = baseUrl;
+					oS.id = "jsonp-request";
+					document.getElementsByTagName("head")[0].appendChild(oS);
+				},
+				success: function(result) {
+					this.list = result;
+				}
+			},
+			watch: {
+				list: function (n, o) {
+					console.log(n === 0);
+				}
+			}
+		})
+	</script>
+</html>
